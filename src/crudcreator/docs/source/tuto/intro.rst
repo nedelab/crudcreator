@@ -42,7 +42,7 @@ Obviously, the program's interface is not exactly the same as the interface of i
 
 The Web world contains a large number of such programs: the back end provides the front end with a REST interface that implements a CRUD. The back simply translates the REST request into a SQL query. A "GET /books?title=Iliade" simply becomes "SELECT * from books where title='Iliade'".
 
-... figure:: ./images/rest_to_sql.png
+.. figure:: ./images/rest_to_sql.png
    :align: center
 
 Sometimes, the query is translated as is. But at other times, functional logic is added. Sometimes, we'll want our program to reprocess the data read from the database (to change attribute names, for example), or we'll want the user to receive only the data he's authorized to read (the back end will then add a where clause to filter on the username of the user who made the GET).
@@ -57,7 +57,7 @@ How does it work?
 
 CRUDCreator allows you to transform a CRUD interface (SQL for example) into another CRUD interface (REST for example). All you need to do is give it a **CRUD source** to connect to (in our example, a SQL database), give it a list of **proxies/modules** that will transform the behavior of the source's CRUD interface, and then give it the type of **CRUD destination** to implement (in our example, a REST API).
 
-... figure:: ./images/principe_base.png
+.. figure:: ./images/principe_base.png
    :align: center
 
 Let's try to understand the scheme by giving a runtime example:
@@ -87,7 +87,7 @@ Proxies can be implemented by the developer using CRUDCreator, or can be found d
 The whole "Source-Proxy-Proxy-...-Proxy" string defines what we'll call a **type of entity (CRUDable)**.
 
 
-... figure:: ./images/entity_type.png
+.. figure:: ./images/entity_type.png
    :align: center
 
 The program can define a **entity type** without plugging in a destination, and use it directly. In this case, it will be up to the program to construct the CRUD queries to be performed.
