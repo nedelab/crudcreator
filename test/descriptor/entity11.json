@@ -1,0 +1,91 @@
+[
+    {
+        "name": "SQLSource",
+        "params": {
+            "engine_wrapper": "$engine_wrapper$"
+        },
+        "interface": {
+            "name": "table11",
+            "fields": [
+                {
+                    "name": "column_id"
+                },
+                {
+                    "name": "column_to_filter_1"
+                },
+                {
+                    "name": "column_to_filter_2"
+                }
+            ]
+        }
+    },
+    {
+        "name": "SQLRequestConstructor",
+        "params": {
+            "read_distinct": false
+        }
+    },
+    {
+        "name": "SQLFilter",
+        "params": {}
+    },
+    {
+        "name": "SQLRequestExecutor",
+        "params": {}
+    },
+    {
+        "name": "Rename",
+        "params": {
+            "interface_name": "entity11",
+            "translation_list": [
+                {
+                    "source": "column_id",
+                    "destination": "field_id"
+                },
+                {
+                    "source": "column_to_filter_1",
+                    "destination": "field_to_filter_1"
+                },
+                {
+                    "source": "column_to_filter_2",
+                    "destination": "field_to_filter_2"
+                }
+            ]
+        }
+    },
+    {
+        "name": "FilterFirewall",
+        "params": {
+            "allowed_filter_on_fields": [
+                {
+                    "field_name": "field_to_filter_1",
+                    "allowed_filter_type": {
+                        "filtration_type": "equal", 
+                        "is_mandatory": false,
+                        "default": null
+                    }
+                },
+                {
+                    "field_name": "field_to_filter_2",
+                    "allowed_filter_type": {
+                        "filtration_type": "equal", 
+                        "is_mandatory": false,
+                        "default": null
+                    }
+                }
+            ]
+        }
+    },
+    {
+        "name": "AddFilter",
+        "params": {
+            "list_filter_instance_to_add": [
+                {
+                   "field_name": "field_to_filter_2",
+                   "filter_value": "test",
+                   "filtration_type": "equal"
+                }
+            ]
+        }
+    }
+]

@@ -1,0 +1,60 @@
+[
+    {
+        "name": "SQLSource",
+        "params": {
+            "engine_wrapper": "$engine_wrapper$"
+        },
+        "interface": {
+            "name": "book",
+            "fields": [
+                {
+                    "name": "book_id",
+                    "is_id_field": true,
+                    "can_be_created": true,
+                    "can_be_updated": false
+                },
+                {
+                    "name": "title",
+                    "is_id_field": false,
+                    "can_be_created": true,
+                    "can_be_updated": true
+                },
+                {
+                    "name": "public_domain",
+                    "is_id_field": false,
+                    "can_be_created": true,
+                    "can_be_updated": false
+                }
+            ]
+        }
+    },
+    {
+        "name": "SQLRequestConstructor",
+        "params": {
+            "read_distinct": false
+        }
+    },
+    {
+        "name": "SQLFilter",
+        "params": {}
+    },
+    {
+        "name": "SQLRequestExecutor",
+        "params": {}
+    },
+    {
+        "name": "FilterFirewall",
+        "params": {
+            "allowed_filter_on_fields": [
+                {
+                    "field_name": "title",
+                    "allowed_filter_type": {
+                        "filtration_type": "contain", 
+                        "is_mandatory": false,
+                        "default": null
+                    }
+                }
+            ]
+        }
+    }
+]

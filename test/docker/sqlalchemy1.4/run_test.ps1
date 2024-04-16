@@ -1,0 +1,2 @@
+docker build -t crudcreator_test_sqlalchemy1.4 -f test/docker/sqlalchemy1.4/Dockerfile .
+docker compose -f test/docker/docker-compose.yaml --env-file test/docker/sqlalchemy1.4/.env.local up crudcreator_test

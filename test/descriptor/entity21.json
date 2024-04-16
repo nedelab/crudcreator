@@ -1,0 +1,83 @@
+[
+    {
+        "name": "SQLSource",
+        "params": {
+            "engine_wrapper": "$engine_wrapper$"
+        },
+        "interface": {
+            "name": "table21",
+            "fields": [
+                {
+                    "name": "column_1",
+                    "is_id_field": false,
+                    "can_be_created": true,
+                    "can_be_updated": true,
+                    "default": "$random_int$"
+                },
+                {
+                    "name": "column_2",
+                    "is_id_field": true,
+                    "can_be_created": true,
+                    "can_be_updated": true,
+                    "nullable": false
+                }
+            ]
+        }
+    },
+    {
+        "name": "SQLRequestConstructor",
+        "params": {
+            "read_distinct": false
+        }
+    },
+    {
+        "name": "SQLFilter",
+        "params": {}
+    },
+    {
+        "name": "SQLRequestExecutor",
+        "params": {}
+    },
+    {
+        "name": "Rename",
+        "params": {
+            "interface_name": "entity21",
+            "translation_list": [
+                {
+                    "source": "column_1",
+                    "destination": "field_1"
+                },
+                {
+                    "source": "column_2",
+                    "destination": "field_2"
+                }
+            ]
+        }
+    },
+    {
+        "name": "FilterFirewall",
+        "params": {
+            "allowed_filter_on_fields": [
+                {
+                    "field_name": "field_2",
+                    "allowed_filter_type": {
+                        "filtration_type": "equal", 
+                        "is_mandatory": false,
+                        "default": null
+                    }
+                }
+            ]
+        }
+    },
+    {
+        "name": "AddDefault",
+        "params": {
+            "default_on_fields": [
+                {
+                    "field_name": "field_2",
+                    "default": 10
+                }
+            ]
+        }
+    }
+]

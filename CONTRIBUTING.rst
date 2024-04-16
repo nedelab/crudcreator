@@ -1,0 +1,1 @@
+Please see https://www.crudcreator.com/contributing for information on how to contribute to crudcreator.

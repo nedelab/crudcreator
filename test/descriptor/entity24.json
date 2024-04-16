@@ -1,0 +1,104 @@
+[
+    {
+        "name": "SQLSource",
+        "params": {
+            "engine_wrapper": "$engine_wrapper$"
+        },
+        "interface": {
+            "name": "table24",
+            "fields": [
+                {
+                    "name": "column_1",
+                    "can_be_created": true,
+                    "can_be_updated": true
+                },
+                {
+                    "name": "column_2",
+                    "is_id_field": true,
+                    "can_be_created": true,
+                    "can_be_updated": true
+                },
+                {
+                    "name": "creation_date",
+                    "is_id_field": false,
+                    "can_be_created": false,
+                    "can_be_updated": false
+                },
+                {
+                    "name": "last_update_date",
+                    "is_id_field": false,
+                    "can_be_created": false,
+                    "can_be_updated": false
+                }
+            ]
+        }
+    },
+    {
+        "name": "SQLRequestConstructor",
+        "params": {
+            "read_distinct": false
+        }
+    },
+    {
+        "name": "SQLFilter",
+        "params": {}
+    },
+    {
+        "name": "SQLRequestExecutor",
+        "params": {}
+    },
+    {
+        "name": "Rename",
+        "params": {
+            "interface_name": "entity24",
+            "translation_list": []
+        }
+    },
+    {
+        "name": "ReadFirewall",
+        "params": {
+            "list_readable_field_name": ["column_1", "column_2", "creation_date", "last_update_date"]
+        }
+    },
+    {
+        "name": "FilterFirewall",
+        "params": {
+            "allowed_filter_on_fields": [
+                {
+                    "field_name": "column_1",
+                    "allowed_filter_type": {
+                        "filtration_type": "equal", 
+                        "is_mandatory": false,
+                        "default": null
+                    }
+                },
+                {
+                    "field_name": "column_2",
+                    "allowed_filter_type": {
+                        "filtration_type": "equal", 
+                        "is_mandatory": false,
+                        "default": null
+                    }
+                }
+            ]
+        }
+    },
+    {
+        "name": "AddWriteValue",
+        "params": {
+            "list_create_value": [
+                {
+                    "name": "creation_date",
+                    "value": "$now$"
+                }
+            ],
+            
+            "list_update_value": [
+                {
+                    "name": "last_update_date",
+                    "value": "$now$"
+                }
+            ]
+        }
+    }
+]

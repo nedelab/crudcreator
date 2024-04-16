@@ -1,0 +1,102 @@
+[
+    {
+        "name": "SQLSource",
+        "params": {
+            "engine_wrapper": "$engine_wrapper$"
+        },
+        "interface": {
+            "name": "table14",
+            "fields": [
+                {
+                    "name": "column_id"
+                },
+                {
+                    "name": "column_to_join",
+                    "is_id_field": true
+                }
+            ]
+        }
+    },
+    {
+        "name": "SQLRequestConstructor",
+        "params": {
+            "read_distinct": false
+        }
+    },
+    {
+        "name": "SQLFilter",
+        "params": {}
+    },
+    {
+        "name": "SQLRequestExecutor",
+        "params": {}
+    },
+    {
+        "name": "Rename",
+        "params": {
+            "interface_name": "entity14",
+            "translation_list": [
+                {
+                    "source": "column_id",
+                    "destination": "field_id"
+                },
+                {
+                    "source": "column_to_join",
+                    "destination": "field_to_join"
+                }
+            ]
+        }
+    },
+    {
+        "name": "ReadFirewall",
+        "params": {
+            "list_readable_field_name": [
+                "field_to_join"
+            ]
+        }
+    },
+    {
+        "name": "CreateLink",
+        "params": {
+            "interface_merge": true,
+            "list_linked_field": [
+                {
+                    "field_name": "field_to_join",
+                    "link": {
+                        "entity_type_linked_to": "$entity3$",
+                        "field_name_linked_to": "field_to_be_joined",
+                        "type": {
+                            "source": {
+                                "min": "zero",
+                                "max": "one"
+                            },
+                            "dest": {
+                                "min": "zero",
+                                "max": "one"
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    {
+        "name": "CascadeDelete",
+        "params": {}
+    },
+    {
+        "name": "FilterFirewall",
+        "params": {
+            "allowed_filter_on_fields": [
+                {
+                    "field_name": "field_to_join",
+                    "allowed_filter_type": {
+                        "filtration_type": "equal", 
+                        "is_mandatory": false,
+                        "default": null
+                    }
+                }
+            ]
+        }
+    }
+]

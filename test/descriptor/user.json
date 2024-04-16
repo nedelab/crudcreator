@@ -1,0 +1,36 @@
+[
+    {
+        "name": "SQLSource",
+        "params": {
+            "engine_wrapper": "$engine_wrapper$"
+        },
+        "interface": {
+            "name": "table_user",
+            "fields": [
+                {
+                    "name": "user_id"
+                },
+                {
+                    "name": "username"
+                },
+                {
+                    "name": "column_id"
+                },
+                {
+                    "name": "other"
+                }
+            ]
+        }
+    },
+    {
+        "name": "SQLRequestConstructor",
+        "params": {
+            "read_distinct": true
+        }
+    },
+    {
+        "name": "SQLFilter",
+        "params": {},
+        "ref": "user_sql"
+    }
+]

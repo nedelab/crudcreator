@@ -1,0 +1,94 @@
+[
+    {
+        "name": "SQLSource",
+        "params": {
+            "engine_wrapper": "$engine_wrapper$"
+        },
+        "interface": {
+            "name": "table15",
+            "fields": [
+                {
+                    "name": "column_id"
+                },
+                {
+                    "name": "user_id"
+                }
+            ]
+        }
+    },
+    {
+        "name": "SQLRequestConstructor",
+        "params": {
+            "read_distinct": true
+        }
+    },
+    {
+        "name": "SQLCreateLink",
+        "params": {
+            "interface_merge": true,
+            "list_linked_field": [
+                {
+                    "field_name": "user_id",
+                    "link": {
+                        "entity_type_linked_to": "$user_sql$",
+                        "field_name_linked_to": "user_id",
+                        "type": {
+                            "source": {
+                                "min": "one",
+                                "max": "one"
+                            },
+                            "dest": {
+                                "min": "one",
+                                "max": "one"
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    {
+        "name": "SQLReadFromLink",
+        "params": {}
+    },
+    {
+        "name": "SQLFilter",
+        "params": {}
+    },
+    {
+        "name": "SQLRequestExecutor",
+        "params": {}
+    },
+    {
+        "name": "Rename",
+        "params": {
+            "interface_name": "entity15",
+            "translation_list": [
+                {
+                    "source": "column_id",
+                    "destination": "field_id"
+                }
+            ]
+        }
+    },
+    {
+        "name": "ReadFirewall",
+        "params": {
+            "list_readable_field_name": ["user_id", "field_id", "table_user.column_id", "other"]
+        }
+    },
+    {
+        "name": "FilterFirewall",
+        "params": {
+            "allowed_filter_on_fields": [
+                {
+                    "field_name": "username",
+                    "allowed_filter_type": {
+                        "filtration_type": "equal", 
+                        "is_mandatory": true
+                    }
+                }
+            ]
+        }
+    }
+]

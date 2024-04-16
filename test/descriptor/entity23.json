@@ -1,0 +1,174 @@
+[
+    {
+        "name": "SQLSource",
+        "params": {
+            "engine_wrapper": "$engine_wrapper$"
+        },
+        "interface": {
+            "name": "table23",
+            "fields": [
+                {
+                    "name": "column_1",
+                    "can_be_created": true,
+                    "can_be_updated": true
+                },
+                {
+                    "name": "column_2_bis",
+                    "is_id_field": true,
+                    "can_be_created": true,
+                    "can_be_updated": true
+                }
+            ]
+        }
+    },
+    {
+        "name": "SQLRequestConstructor",
+        "params": {
+            "read_distinct": false
+        }
+    },
+    {
+        "name": "SQLCreateLink",
+        "params": {
+            "interface_merge": true,
+            "list_linked_field": [
+                {
+                    "field_name": "column_1",
+                    "link": {
+                        "entity_type_linked_to": "$entity20_sql_before_read_link$",
+                        "field_name_linked_to": "column_1",
+                        "type": {
+                            "source": {
+                                "min": "one",
+                                "max": "one"
+                            },
+                            "dest": {
+                                "min": "zero",
+                                "max": "many"
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    {
+        "name": "SQLReadFromLink",
+        "params": {
+            "list_activate_entity_only_on_option": [
+                {
+                    "entity_name": "table20",
+                    "option_name": "extend_group_bis"
+                },
+                {
+                    "entity_name": "table_many",
+                    "option_name": "extend_group"
+                }
+            ]
+        }
+    },
+    {
+        "name": "SQLFilter",
+        "params": {}
+    },
+    {
+        "name": "SQLRequestExecutor",
+        "params": {}
+    },
+    {
+        "name": "Rename",
+        "params": {
+            "interface_name": "entity23",
+            "translation_list": []
+        }
+    },
+    {
+        "name": "ReadFirewall",
+        "params": {
+            "list_readable_field_name": ["column_1", "column_2_bis", "table20.column_1", "column_2", "table_many.column_1", "table_many.column_2"]
+        }
+    },
+    {
+        "name": "FilterFirewall",
+        "params": {
+            "allowed_filter_on_fields": [
+                {
+                    "field_name": "column_1",
+                    "allowed_filter_type": {
+                        "filtration_type": "equal", 
+                        "is_mandatory": false,
+                        "default": null
+                    }
+                },
+                {
+                    "field_name": "column_2",
+                    "allowed_filter_type": {
+                        "filtration_type": "equal", 
+                        "is_mandatory": false,
+                        "default": null
+                    }
+                },
+                {
+                    "field_name": "table_many.column_1",
+                    "allowed_filter_type": {
+                        "filtration_type": "equal", 
+                        "is_mandatory": false,
+                        "default": null
+                    }
+                },
+                {
+                    "field_name": "table_many.column_2",
+                    "allowed_filter_type": {
+                        "filtration_type": "equal", 
+                        "is_mandatory": false,
+                        "default": null
+                    }
+                }
+            ]
+        }
+    },
+    {
+        "name": "GroupBy",
+        "params": {
+            "group_name": "group",
+            "grouped_by_fields": ["column_1", "column_2_bis", "table20.column_1", "column_2"],
+            "one_elem_with_all_none_means_empty": true,
+            "see_group_only_on_option": "extend_group"
+        }
+    },
+    {
+        "name": "GroupBy",
+        "params": {
+            "group_name": "group_bis",
+            "grouped_by_fields": ["column_1", "column_2_bis"],
+            "one_elem_with_all_none_means_empty": true,
+            "see_group_only_on_option": "extend_group_bis"
+        }
+    },
+    {
+        "name": "AddOptions",
+        "params": {
+            "list_read_options": [
+                {
+                    "name": "extend_group_bis",
+                    "type": "bool",
+                    "default": true,
+                    "is_mandatory": false
+                }
+            ]
+        }
+    },
+    {
+        "name": "AddOptions",
+        "params": {
+            "list_read_options": [
+                {
+                    "name": "extend_group",
+                    "type": "bool",
+                    "default": true,
+                    "is_mandatory": false
+                }
+            ]
+        }
+    }
+]

@@ -1,0 +1,3 @@
+
+class Sentinel():
+    unknown = "unknown" 

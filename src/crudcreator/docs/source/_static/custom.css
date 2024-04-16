@@ -1,0 +1,19 @@
+p {
+    text-align: justify;
+}
+
+body {
+    font-family: Arial, sans-serif
+}
+
+.wy-side-nav-search {
+    background-color: black;
+}
+
+.wy-nav-content {
+    max-width: none;
+}
+
+section.hide-me > h1 {
+    display: none;
+}

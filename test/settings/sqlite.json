@@ -1,0 +1,8 @@
+{
+    "database_type": "sqlite",
+    "postgres_username": "postgres",
+    "postgres_password": "Qz7uCa7V75k6qA",
+    "postgres_database": "postgres",
+    "postgres_port": 5601,
+    "postgres_host": "localhost"
+}

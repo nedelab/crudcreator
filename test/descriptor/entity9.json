@@ -1,0 +1,71 @@
+[
+    {
+        "name": "SQLSource",
+        "params": {
+            "engine_wrapper": "$engine_wrapper$"
+        },
+        "interface": {
+            "name": "table9",
+            "fields": [
+                {
+                    "name": "column_pk_becomes_not_pk",
+                    "can_be_created": true,
+                    "can_be_updated": true,
+                    "is_id_field": false
+                },
+                {
+                    "name": "column_not_pk_becomes_pk",
+                    "can_be_created": true,
+                    "can_be_updated": true,
+                    "is_id_field": true
+                },
+                {
+                    "name": "column_not_pk_becomes_pk_default",
+                    "can_be_created": true,
+                    "can_be_updated": true,
+                    "is_id_field": true
+                }
+            ]
+        }
+    },
+    {
+        "name": "SQLRequestConstructor",
+        "params": {
+            "read_distinct": false
+        }
+    },
+    {
+        "name": "SQLFilter",
+        "params": {}
+    },
+    {
+        "name": "SQLRequestExecutor",
+        "params": {}
+    },
+    {
+        "name": "Rename",
+        "params": {
+            "interface_name": "entity9",
+            "translation_list": [
+                {
+                    "source": "column_pk_becomes_not_pk",
+                    "destination": "field_pk_becomes_not_pk"
+                },
+                {
+                    "source": "column_not_pk_becomes_pk",
+                    "destination": "field_not_pk_becomes_pk"
+                },
+                {
+                    "source": "column_not_pk_becomes_pk_default",
+                    "destination": "field_not_pk_becomes_pk_default"
+                }
+            ]
+        }
+    },
+    {
+        "name": "FilterFirewall",
+        "params": {
+            "allowed_filter_on_fields": []
+        }
+    }
+]

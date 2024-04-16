@@ -1,0 +1,123 @@
+[
+    {
+        "name": "SQLSource",
+        "params": {
+            "engine_wrapper": "$engine_wrapper$"
+        },
+        "interface": {
+            "name": "table19",
+            "fields": [
+                {
+                    "name": "column_1",
+                    "is_id_field": true
+                },
+                {
+                    "name": "column_2"
+                }
+            ]
+        }
+    },
+    {
+        "name": "SQLRequestConstructor",
+        "params": {
+            "read_distinct": false
+        }
+    },
+    {
+        "name": "SQLFilter",
+        "params": {}
+    },
+    {
+        "name": "SQLRequestExecutor",
+        "params": {}
+    },
+    {
+        "name": "Rename",
+        "params": {
+            "interface_name": "entity19",
+            "translation_list": [
+                {
+                    "source": "column_1",
+                    "destination": "field_1"
+                },
+                {
+                    "source": "column_2",
+                    "destination": "field_2"
+                }
+            ]
+        }
+    },
+    {
+        "name": "ReadFirewall",
+        "params": {
+            "list_readable_field_name": [
+                "field_1",
+                "field_2"
+            ]
+        }
+    },
+    {
+        "name": "FilterFirewall",
+        "params": {
+            "allowed_filter_on_fields": [
+                {
+                    "field_name": "column_1",
+                    "allowed_filter_type": {
+                        "filtration_type": "equal", 
+                        "is_mandatory": false,
+                        "default": null
+                    }
+                },
+                {
+                    "field_name": "column_2",
+                    "allowed_filter_type": {
+                        "filtration_type": "equal", 
+                        "is_mandatory": false,
+                        "default": null
+                    }
+                }
+            ]
+        }
+    },
+    {
+        "name": "TestOption",
+        "params": {}
+    },
+    {
+        "name": "AddOptions",
+        "params": {
+            "list_creator_options": [
+                {
+                    "name": "copy_1_to_2",
+                    "type": "bool",
+                    "default": true,
+                    "is_mandatory": false
+                }
+            ],
+            "list_deletor_options": [
+                {
+                    "name": "delete_fixed",
+                    "type": "bool",
+                    "default": true,
+                    "is_mandatory": false
+                }
+            ],
+            "list_updator_options": [
+                {
+                    "name": "copy_1_to_2",
+                    "type": "bool",
+                    "default": true,
+                    "is_mandatory": false
+                }
+            ],
+            "list_read_options": [
+                {
+                    "name": "add_fixed",
+                    "type": "bool",
+                    "default": true,
+                    "is_mandatory": false
+                }
+            ]
+        }
+    }
+]

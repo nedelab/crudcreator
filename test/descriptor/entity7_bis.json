@@ -1,0 +1,45 @@
+[
+    {
+        "source": "entity7_source",
+        "name": "SQLRequestConstructor",
+        "params": {
+            "read_distinct": false
+        }
+    },
+    {
+        "name": "SQLSort",
+        "params": {
+            "list_field_to_sort": [
+                {
+                    "field_name": "sort1",
+                    "type": "asc"
+                },
+                {
+                    "field_name": "sort2",
+                    "type": "asc"
+                }
+            ]
+        }
+    },
+    {
+        "name": "SQLFilter",
+        "params": {}
+    },
+    {
+        "name": "SQLRequestExecutor",
+        "params": {}
+    },
+    {
+        "name": "Rename",
+        "params": {
+            "interface_name": "entity7_bis",
+            "translation_list": []
+        }
+    },
+    {
+        "name": "FilterFirewall",
+        "params": {
+            "allowed_filter_on_fields": []
+        }
+    }
+]

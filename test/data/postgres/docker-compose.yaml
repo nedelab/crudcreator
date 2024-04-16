@@ -1,0 +1,14 @@
+services:
+  postgres:
+    image:  postgres
+    container_name: ${PROJECT_CONTAINER_NAME}_postgres
+    ports: 
+      - ${POSTGRES_PORT}:5432
+    environment:
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    networks:
+      - crudcreator_test
+
+networks:
+  crudcreator_test:
+    external: true

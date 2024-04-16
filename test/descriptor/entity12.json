@@ -1,0 +1,73 @@
+[
+    {
+        "name": "SQLSource",
+        "params": {
+            "engine_wrapper": "$engine_wrapper$"
+        },
+        "interface": {
+            "name": "table12",
+            "fields": [
+                {
+                    "name": "column_id"
+                },
+                {
+                    "name": "column_date"
+                }
+            ]
+        }
+    },
+    {
+        "name": "SQLRequestConstructor",
+        "params": {
+            "read_distinct": false
+        }
+    },
+    {
+        "name": "SQLFilter",
+        "params": {}
+    },
+    {
+        "name": "SQLRequestExecutor",
+        "params": {}
+    },
+    {
+        "name": "Rename",
+        "params": {
+            "interface_name": "entity12",
+            "translation_list": [
+                {
+                    "source": "column_id",
+                    "destination": "field_id"
+                },
+                {
+                    "source": "column_date",
+                    "destination": "field_date"
+                }
+            ]
+        }
+    },
+    {
+        "name": "FilterFirewall",
+        "params": {
+            "allowed_filter_on_fields": [
+                {
+                    "field_name": "field_date",
+                    "allowed_filter_type": {
+                        "filtration_type": "min", 
+                        "is_mandatory": false,
+                        "default": null
+                    }
+                },
+                
+                {
+                    "field_name": "field_date",
+                    "allowed_filter_type": {
+                        "filtration_type": "max", 
+                        "is_mandatory": false,
+                        "default": null
+                    }
+                }
+            ]
+        }
+    }
+]

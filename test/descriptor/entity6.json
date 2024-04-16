@@ -1,0 +1,110 @@
+[
+    {
+        "name": "SQLSource",
+        "params": {
+            "engine_wrapper": "$engine_wrapper$"
+        },
+        "interface": {
+            "name": "table6",
+            "fields": [
+                {
+                    "name": "column_id",
+                    "is_id_field": true,
+                    "can_be_created": true,
+                    "can_be_updated": true
+                },
+                {
+                    "name": "is_deleted"
+                },
+                {
+                    "name": "is_active"
+                }
+            ]
+        }
+    },
+    {
+        "name": "SQLRequestConstructor",
+        "params": {
+            "read_distinct": false
+        }
+    },
+    {
+        "name": "SQLFilter",
+        "params": {}
+    },
+    {
+        "name": "SQLRequestExecutor",
+        "params": {}
+    },
+    {
+        "name": "Rename",
+        "params": {
+            "interface_name": "entity6",
+            "translation_list": [
+                {
+                    "source": "column_id",
+                    "destination": "field_id"
+                }
+            ]
+        }
+    },
+    {
+        "name": "RecastType",
+        "params": {
+            "list_recast_field": [
+                {
+                    "field_name": "is_active",
+                    "special_type": "$oui_non_type$"
+                }
+            ]
+        }
+    },
+    {
+        "name": "SoftDelete",
+        "params": {
+            "list_field_value_if_deleted": [
+                {
+                    "field_name": "is_active",
+                    "value_if_deleted": false,
+                    "keep_visible": true
+                },
+                {
+                    "field_name": "is_deleted",
+                    "value_if_deleted": true,
+                    "keep_visible": false
+                }
+            ]
+        }
+    },
+    {
+        "name": "AddWriteValue",
+        "params": {
+            "list_create_value": [
+                {
+                    "name": "is_active",
+                    "value": true
+                },
+                {
+                    "name": "is_deleted",
+                    "value": false
+                }
+            ],
+            "list_update_value": []
+        }
+    },
+    {
+        "name": "FilterFirewall",
+        "params": {
+            "allowed_filter_on_fields": [
+                {
+                    "field_name": "field_id",
+                    "allowed_filter_type": {
+                        "filtration_type": "equal", 
+                        "is_mandatory": false,
+                        "default": null
+                    }
+                }
+            ]
+        }
+    }
+]

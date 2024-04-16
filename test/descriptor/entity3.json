@@ -1,0 +1,95 @@
+[
+    {
+        "name": "SQLSource",
+        "params": {
+            "engine_wrapper": "$engine_wrapper$"
+        },
+        "interface": {
+            "name": "table3",
+            "fields": [
+                {
+                    "name": "column_to_be_joined"
+                },
+                {
+                    "name": "column_test",
+                    "is_id_field": true
+                },
+                {
+                    "name": "column_text_oui_non_bis",
+                    "can_be_created": true,
+                    "can_be_updated": true
+                }
+            ]
+        }
+    },
+    {
+        "name": "SQLRequestConstructor",
+        "params": {
+            "read_distinct": false
+        }
+    },
+    {
+        "name": "SQLFilter",
+        "params": {},
+        "ref": "entity3_sql"
+    },
+    {
+        "name": "SQLRequestExecutor",
+        "params": {}
+    },
+    {
+        "name": "Rename",
+        "params": {
+            "interface_name": "entity3",
+            "translation_list": [
+                {
+                    "source": "column_test",
+                    "destination": "field_test"
+                },
+                {
+                    "source": "column_text_oui_non_bis",
+                    "destination": "field_bool_converted_bis"
+                },
+                {
+                    "source": "column_to_be_joined",
+                    "destination": "field_to_be_joined"
+                }
+            ]
+        }
+    },
+    {
+        "name": "RecastType",
+        "params": {
+            "list_recast_field": [
+                {
+                    "field_name": "field_bool_converted_bis",
+                    "special_type": "$oui_non_type$"
+                }
+            ]
+        }
+    },
+    {
+        "name": "FilterFirewall",
+        "params": {
+            "allowed_filter_on_fields": [
+                {
+                    "field_name": "field_bool_converted_bis",
+                    "allowed_filter_type": {
+                        "filtration_type": "equal", 
+                        "is_mandatory": false,
+                        "default": null
+                    }
+                },
+                {
+                    "field_name": "field_to_be_joined",
+                    "allowed_filter_type": {
+                        "filtration_type": "equal", 
+                        "is_mandatory": false,
+                        "default": null
+                    }
+                }
+            ]
+        },
+        "ref": "entity3"
+    }
+]

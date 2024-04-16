@@ -1,0 +1,72 @@
+[
+    {
+        "name": "SQLSource",
+        "params": {
+            "engine_wrapper": "$engine_wrapper$"
+        },
+        "interface": {
+            "name": "table7",
+            "fields": [
+                {
+                    "name": "column_id",
+                    "is_id_field": true,
+                    "can_be_created": true,
+                    "can_be_updated": true
+                },
+                {
+                    "name": "sort1",
+                    "can_be_created": true,
+                    "can_be_updated": true
+                },
+                {
+                    "name": "sort2",
+                    "can_be_created": true,
+                    "can_be_updated": true
+                }
+            ]
+        },
+        "ref": "entity7_source"
+    },
+    {
+        "name": "SQLRequestConstructor",
+        "params": {
+            "read_distinct": false
+        }
+    },
+    {
+        "name": "SQLSort",
+        "params": {
+            "list_field_to_sort": [
+                {
+                    "field_name": "sort1",
+                    "type": "asc"
+                },
+                {
+                    "field_name": "sort2",
+                    "type": "desc"
+                }
+            ]
+        }
+    },
+    {
+        "name": "SQLFilter",
+        "params": {}
+    },
+    {
+        "name": "SQLRequestExecutor",
+        "params": {}
+    },
+    {
+        "name": "Rename",
+        "params": {
+            "interface_name": "entity7",
+            "translation_list": []
+        }
+    },
+    {
+        "name": "FilterFirewall",
+        "params": {
+            "allowed_filter_on_fields": []
+        }
+    }
+]

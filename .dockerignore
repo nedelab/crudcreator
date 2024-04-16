@@ -1,0 +1,15 @@
+env
+modules.txt
+__pycache__
+.pytest_cache
+.vscode
+*.zip
+*.sqlite
+TODO.txt
+src/crudcreator/docs/build
+data
+!test/data
+.$*
+dist
+.pypirc
+*.egg-info

@@ -1,0 +1,75 @@
+[
+    {
+        "name": "SQLSource",
+        "params": {
+            "engine_wrapper": "$engine_wrapper$"
+        },
+        "interface": {
+            "name": "table25",
+            "fields": [
+                {
+                    "name": "column_id",
+                    "can_be_updated": true,
+                    "can_be_created": true,
+                    "is_id_field": true
+                },
+                {
+                    "name": "username",
+                    "is_id_field": true,
+                    "can_be_created": true
+                },
+                {
+                    "name": "other",
+                    "can_be_created": true,
+                    "can_be_updated": true
+                }
+            ]
+        }
+    },
+    {
+        "name": "SQLRequestConstructor",
+        "params": {
+            "read_distinct": true
+        }
+    },
+    {
+        "name": "SQLFilter",
+        "params": {}
+    },
+    {
+        "name": "SQLRequestExecutor",
+        "params": {}
+    },
+    {
+        "name": "Rename",
+        "params": {
+            "interface_name": "entity25",
+            "translation_list": [
+                {
+                    "source": "column_id",
+                    "destination": "field_id"
+                }
+            ]
+        }
+    },
+    {
+        "name": "ReadFirewall",
+        "params": {
+            "list_readable_field_name": ["field_id", "other"]
+        }
+    },
+    {
+        "name": "FilterFirewall",
+        "params": {
+            "allowed_filter_on_fields": [
+                {
+                    "field_name": "username",
+                    "allowed_filter_type": {
+                        "filtration_type": "equal", 
+                        "is_mandatory": true
+                    }
+                }
+            ]
+        }
+    }
+]

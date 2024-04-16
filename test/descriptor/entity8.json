@@ -1,0 +1,59 @@
+[
+    {
+        "name": "SQLSource",
+        "params": {
+            "engine_wrapper": "$engine_wrapper$"
+        },
+        "interface": {
+            "name": "table8",
+            "fields": [
+                {
+                    "name": "column_id",
+                    "can_be_created": false,
+                    "can_be_updated": false
+                },
+                {
+                    "name": "column_2",
+                    "can_be_created": true,
+                    "can_be_updated": true
+                }
+            ]
+        }
+    },
+    {
+        "name": "SQLRequestConstructor",
+        "params": {
+            "read_distinct": false
+        }
+    },
+    {
+        "name": "SQLFilter",
+        "params": {}
+    },
+    {
+        "name": "SQLRequestExecutor",
+        "params": {}
+    },
+    {
+        "name": "Rename",
+        "params": {
+            "interface_name": "entity8",
+            "translation_list": [
+                {
+                    "source": "column_2",
+                    "destination": "field_2"
+                },
+                {
+                    "source": "column_id",
+                    "destination": "field_id"
+                }
+            ]
+        }
+    },
+    {
+        "name": "FilterFirewall",
+        "params": {
+            "allowed_filter_on_fields": []
+        }
+    }
+]

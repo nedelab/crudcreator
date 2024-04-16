@@ -1,0 +1,309 @@
+[
+    {
+        "name": "SQLSource",
+        "params": {
+            "engine_wrapper": "$engine_wrapper$"
+        },
+        "interface": {
+            "name": "$table1_var$",
+            "fields": [
+                {
+                    "name": "column_to_join"
+                },
+                {
+                    "name": "column_int"
+                },
+                {
+                    "name": "column_text_primary_not_null_no_default"
+                },
+                {
+                    "name": "column_text_not_null_default"
+                },
+                {
+                    "name": "column_text_default"
+                },
+                {
+                    "name": "column_text_no_default"
+                },
+                {
+                    "name": "column_text_overwritten_default",
+                    "default": "overwritten_default"
+                },
+                {
+                    "name": "column_text_not_writable"
+                },
+                {
+                    "name": "column_text_not_writable_no_default"
+                },
+                {
+                    "name": "column_text_creatable_not_updatable"
+                },
+                {
+                    "name": "column_text_updatable_not_creatable"
+                },
+                {
+                    "name": "column_text_not_readable"
+                },
+                {
+                    "name": "column_text_oui_non"
+                }
+            ]
+        }
+    },
+    {
+        "name": "SQLRequestConstructor",
+        "params": {
+            "read_distinct": false
+        }
+    },
+    {
+        "name": "SQLCreateLink",
+        "params": {
+            "interface_merge": true,
+            "list_linked_field": [
+                {
+                    "field_name": "column_to_join",
+                    "link": {
+                        "entity_type_linked_to": "$entity3_sql$",
+                        "field_name_linked_to": "column_to_be_joined",
+                        "type": {
+                            "source": {
+                                "min": "one",
+                                "max": "one"
+                            },
+                            "dest": {
+                                "min": "one",
+                                "max": "one"
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    {
+        "name": "SQLReadFromLink",
+        "params": {}
+    },
+    {
+        "name": "SQLFilter",
+        "params": {}
+    },
+    {
+        "name": "SQLRequestExecutor",
+        "params": {}
+    },
+    {
+        "name": "Rename",
+        "params": {
+            "interface_name": "entity1",
+            "translation_list": [
+                {
+                    "source": "column_test",
+                    "destination": "field_test"
+                },
+                {
+                    "source": "column_text_oui_non_bis",
+                    "destination": "field_bool_converted_bis"
+                },
+                {
+                    "source": "column_to_join",
+                    "destination": "field_to_join"
+                },
+                {
+                    "source": "column_int",
+                    "destination": "field_int"
+                },
+                {
+                    "source": "column_text_oui_non",
+                    "destination": "field_bool_converted"
+                },
+                {
+                    "source": "column_text_primary_not_null_no_default",
+                    "destination": "field_text_primary_not_null_no_default"
+                },
+                {
+                    "source": "column_text_not_null_default",
+                    "destination": "field_text_not_null_default"
+                },
+                {
+                    "source": "column_text_default",
+                    "destination": "field_text_default"
+                },
+                {
+                    "source": "column_text_no_default",
+                    "destination": "field_text_no_default"
+                },
+                {
+                    "source": "column_text_overwritten_default",
+                    "destination": "field_text_overwritten_default"
+                },
+                {
+                    "source": "column_text_not_writable",
+                    "destination": "field_text_not_writable"
+                },
+                {
+                    "source": "column_text_not_writable_no_default",
+                    "destination": "field_text_not_writable_no_default"
+                },
+                {
+                    "source": "column_text_not_readable",
+                    "destination": "field_text_not_readable"
+                },
+                {
+                    "source": "column_text_creatable_not_updatable",
+                    "destination": "field_text_creatable_not_updatable"
+                },
+                {
+                    "source": "column_text_updatable_not_creatable",
+                    "destination": "field_text_updatable_not_creatable"
+                }
+            ]
+        }
+    },
+    {
+        "name": "ReadFirewall",
+        "params": {
+            "list_readable_field_name": [
+                "field_test",
+                "field_bool_converted_bis",
+                "field_to_join",
+                "field_int",
+                "field_bool_converted",
+                "field_text_primary_not_null_no_default",
+                "field_text_not_null_default",
+                "field_text_default",
+                "field_text_no_default",
+                "field_text_overwritten_default",
+                "field_text_not_writable",
+                "field_text_not_writable_no_default",
+                "field_text_creatable_not_updatable",
+                "field_text_updatable_not_creatable"
+            ]
+        }
+    },
+    {
+        "name": "CreateFirewall",
+        "params": {
+            "list_creatable_field_name": [
+                "field_to_join",
+                "field_int",
+                "field_text_primary_not_null_no_default",
+                "field_text_not_null_default",
+                "field_text_default",
+                "field_text_no_default",
+                "field_text_overwritten_default",
+                "field_text_creatable_not_updatable",
+                "field_bool_converted"
+            ]
+        }
+    },
+    {
+        "name": "UpdateFirewall",
+        "params": {
+            "list_updatable_field_name": [
+                "field_to_join",
+                "field_int",
+                "field_text_primary_not_null_no_default",
+                "field_text_not_null_default",
+                "field_text_default",
+                "field_text_no_default",
+                "field_text_overwritten_default",
+                "field_text_updatable_not_creatable",
+                "field_bool_converted"
+            ]
+        }
+    },
+    {
+        "name": "RecastType",
+        "params": {
+            "list_recast_field": [
+                {
+                    "field_name": "field_bool_converted_bis",
+                    "special_type": "$oui_non_type$"
+                },
+                {
+                    "field_name": "field_bool_converted",
+                    "special_type": "$oui_non_type$"
+                }
+            ]
+        }
+    },
+    {
+        "name": "CreateLink",
+        "params": {
+            "interface_merge": true,
+            "list_linked_field": [
+                {
+                    "field_name": "field_to_join",
+                    "link": {
+                        "entity_type_linked_to": "$entity3$",
+                        "field_name_linked_to": "field_to_be_joined",
+                        "type": {
+                            "source": {
+                                "min": "one",
+                                "max": "one"
+                            },
+                            "dest": {
+                                "min": "one",
+                                "max": "one"
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    {
+        "name": "CascadeDelete",
+        "params": {}
+    },
+    {
+        "name": "FilterFirewall",
+        "params": {
+            "allowed_filter_on_fields": [
+                {
+                    "field_name": "field_text_primary_not_null_no_default",
+                    "allowed_filter_type": {
+                        "filtration_type": "contain", 
+                        "is_mandatory": false,
+                        "default": null
+                    }
+                },
+                {
+                    "field_name": "field_text_not_null_default",
+                    "allowed_filter_type": {
+                        "filtration_type": "equal", 
+                        "is_mandatory": false,
+                        "default": null
+                    }
+                },
+                {
+                    "field_name": "field_text_default",
+                    "allowed_filter_type": {
+                        "filtration_type": "pattern", 
+                        "is_mandatory": false,
+                        "default": null
+                    }
+                },
+                {
+                    "field_name": "field_bool_converted",
+                    "allowed_filter_type": {
+                        "filtration_type": "equal", 
+                        "is_mandatory": false,
+                        "default": null
+                    }
+                },
+                {
+                    "field_name": "field_bool_converted_bis",
+                    "allowed_filter_type": {
+                        "filtration_type": "equal", 
+                        "is_mandatory": false,
+                        "default": null,
+                        "force_long_name": true
+                    }
+                }
+            ]
+        }
+    }
+]

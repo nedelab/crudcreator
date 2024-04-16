@@ -1,0 +1,84 @@
+[
+    {
+        "name": "SQLSource",
+        "params": {
+            "engine_wrapper": "$engine_wrapper$"
+        },
+        "interface": {
+            "name": "table27",
+            "fields": [
+                {
+                    "name": "column_1",
+                    "is_id_field": true
+                },
+                {
+                    "name": "column_2",
+                    "is_id_field": true,
+                    "can_be_updated": true
+                }
+            ]
+        }
+    },
+    {
+        "name": "SQLRequestConstructor",
+        "params": {
+            "read_distinct": false
+        }
+    },
+    {
+        "name": "SQLFilter",
+        "params": {}
+    },
+    {
+        "name": "SQLRequestExecutor",
+        "params": {}
+    },
+    {
+        "name": "Rename",
+        "params": {
+            "interface_name": "entity27",
+            "translation_list": [
+                {
+                    "source": "column_1",
+                    "destination": "field_1"
+                },
+                {
+                    "source": "column_2",
+                    "destination": "field_2"
+                }
+            ]
+        }
+    },
+    {
+        "name": "AddIdValue",
+        "params": {
+            "list_ids_value": [
+                {
+                    "name": "field_1",
+                    "value": 1
+                }
+            ]
+        }
+    },
+    {
+        "name": "FilterFirewall",
+        "params": {
+            "allowed_filter_on_fields": [
+                {
+                    "field_name": "field_1",
+                    "allowed_filter_type": {
+                        "filtration_type": "equal", 
+                        "is_mandatory": false
+                    }
+                },
+                {
+                    "field_name": "field_2",
+                    "allowed_filter_type": {
+                        "filtration_type": "equal", 
+                        "is_mandatory": false
+                    }
+                }
+            ]
+        }
+    }
+]

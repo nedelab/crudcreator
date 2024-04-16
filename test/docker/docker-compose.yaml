@@ -1,0 +1,12 @@
+services:
+  crudcreator_test:
+    image: crudcreator_test_${TEST_CONTEXT_SUFFIX}
+    container_name: crudcreator_test_${TEST_CONTEXT_SUFFIX}
+    environment:
+      - CRUDCREATOR_TEST_ENV=${CRUDCREATOR_TEST_ENV}
+    networks:
+      - crudcreator_test
+
+networks:
+  crudcreator_test:
+    external: true

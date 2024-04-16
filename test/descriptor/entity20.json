@@ -1,0 +1,176 @@
+[
+    {
+        "name": "SQLSource",
+        "params": {
+            "engine_wrapper": "$engine_wrapper$"
+        },
+        "interface": {
+            "name": "table20",
+            "fields": [
+                {
+                    "name": "column_1",
+                    "can_be_created": true,
+                    "can_be_updated": true
+                },
+                {
+                    "name": "column_2",
+                    "is_id_field": true,
+                    "can_be_created": true,
+                    "can_be_updated": true
+                }
+            ]
+        }
+    },
+    {
+        "name": "SQLRequestConstructor",
+        "params": {
+            "read_distinct": false
+        }
+    },
+    {
+        "name": "SQLCreateLink",
+        "params": {
+            "interface_merge": true,
+            "list_linked_field": [
+                {
+                    "field_name": "column_1",
+                    "link": {
+                        "entity_type_linked_to": "$entitymany_sql$",
+                        "field_name_linked_to": "column_1",
+                        "type": {
+                            "source": {
+                                "min": "one",
+                                "max": "one"
+                            },
+                            "dest": {
+                                "min": "zero",
+                                "max": "many"
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "ref": "entity20_sql_before_read_link"
+    },
+    {
+        "name": "SQLReadFromLink",
+        "params": {
+            "list_activate_entity_only_on_option": [
+                {
+                    "entity_name": "table_many",
+                    "option_name": "extend_group"
+                }
+            ]
+        }
+    },
+    {
+        "name": "SQLFilter",
+        "params": {},
+        "ref": "entity20_sql"
+    },
+    {
+        "name": "SQLRequestExecutor",
+        "params": {}
+    },
+    {
+        "name": "Rename",
+        "params": {
+            "interface_name": "entity20",
+            "translation_list": []
+        }
+    },
+    {
+        "name": "CreateLink",
+        "params": {
+            "interface_merge": true,
+            "list_linked_field": [
+                {
+                    "field_name": "column_1",
+                    "link": {
+                        "entity_type_linked_to": "$entitymany$",
+                        "field_name_linked_to": "column_1",
+                        "type": {
+                            "source": {
+                                "min": "one",
+                                "max": "one"
+                            },
+                            "dest": {
+                                "min": "zero",
+                                "max": "many"
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    {
+        "name": "ReadFirewall",
+        "params": {
+            "list_readable_field_name": ["column_1", "column_2", "table_many.column_1", "table_many.column_2"]
+        }
+    },
+    {
+        "name": "FilterFirewall",
+        "params": {
+            "allowed_filter_on_fields": [
+                {
+                    "field_name": "column_1",
+                    "allowed_filter_type": {
+                        "filtration_type": "equal", 
+                        "is_mandatory": false,
+                        "default": null
+                    }
+                },
+                {
+                    "field_name": "column_2",
+                    "allowed_filter_type": {
+                        "filtration_type": "equal", 
+                        "is_mandatory": false,
+                        "default": null
+                    }
+                },
+                {
+                    "field_name": "table_many.column_1",
+                    "allowed_filter_type": {
+                        "filtration_type": "equal", 
+                        "is_mandatory": false,
+                        "default": null
+                    }
+                },
+                {
+                    "field_name": "table_many.column_2",
+                    "allowed_filter_type": {
+                        "filtration_type": "equal", 
+                        "is_mandatory": false,
+                        "default": null
+                    }
+                }
+            ]
+        }
+    },
+    {
+        "name": "GroupBy",
+        "params": {
+            "group_name": "group",
+            "grouped_by_fields": ["column_1", "column_2"],
+            "one_elem_with_all_none_means_empty": true,
+            "see_group_only_on_option": "extend_group"
+        }
+    },
+    {
+        "name": "AddOptions",
+        "params": {
+            "list_read_options": [
+                {
+                    "name": "extend_group",
+                    "type": "bool",
+                    "default": true,
+                    "is_mandatory": false
+                }
+            ]
+        },
+        "ref": "entity20"
+    }
+]
