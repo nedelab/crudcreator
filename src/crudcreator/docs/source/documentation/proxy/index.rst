@@ -45,6 +45,6 @@ Proxies already implemented by CRUDCreator
     :maxdepth: 1
     :caption: Sommaire:
 
-    proxy/generic.rst
-    proxy/sql.rst
+    generic/index.rst
+    sql/index.rst
     

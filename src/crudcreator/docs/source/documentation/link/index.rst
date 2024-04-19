@@ -5,7 +5,7 @@ Links
     :depth: 2
     :local:
 
-.. figure:: ./images/ERD_link.drawio.png
+.. figure:: ../images/ERD_link.drawio.png
    :align: center
 
 .. module:: crudcreator.Link

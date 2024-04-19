@@ -5,7 +5,7 @@ SQL source
     :depth: 2
     :local:
     
-.. figure:: ../images/ERD_sql_source.drawio.png
+.. figure:: ../../images/ERD_sql_source.drawio.png
    :align: center
 
 |

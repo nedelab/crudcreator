@@ -7,7 +7,7 @@ Destinations
     :depth: 2
     :local:
 
-.. figure:: ./images/ERD_destination.drawio.png
+.. figure:: ../images/ERD_destination.drawio.png
    :align: center
 
 AbstractDestinationCRUDBuilder

@@ -6,7 +6,7 @@ Transaction
     :depth: 2
     :local:
     
-.. figure:: ./images/ERD_transaction.drawio.png
+.. figure:: ../images/ERD_transaction.drawio.png
    :align: center
 
 

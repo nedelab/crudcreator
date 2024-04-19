@@ -7,7 +7,7 @@ Filters are used for reading.
     :depth: 2
     :local:
 
-.. figure:: ./images/ERD_filter.drawio.png
+.. figure:: ../images/ERD_filter.drawio.png
    :align: center
 
 .. module:: crudcreator.Filter

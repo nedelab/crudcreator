@@ -6,7 +6,7 @@ Entity type
     :depth: 2
     :local:
 
-.. figure:: ./images/ERD_entity.drawio.png
+.. figure:: ../images/ERD_entity.drawio.png
    :align: center
 
 

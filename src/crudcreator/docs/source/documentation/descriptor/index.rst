@@ -5,7 +5,7 @@ Builders
     :depth: 2
     :local:
     
-.. figure:: ./images/ERD_builder.drawio.png
+.. figure:: ../images/ERD_builder.drawio.png
    :align: center
 
 |

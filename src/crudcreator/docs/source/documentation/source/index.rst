@@ -40,4 +40,4 @@ Concrete classes
     :maxdepth: 1
     :caption: Sommaire:
 
-    source/sql.rst
+    sql/index.rst

@@ -1,20 +1,20 @@
 
 
-CRUD Creator documentation
+Documentation
 =======================================
 
 .. toctree::
     :maxdepth: 1
     :caption: Contents:
 
-    entity.rst
-    request.rst
-    filter.rst
-    link.rst
-    source.rst
-    proxy.rst
-    destination.rst
-    transaction.rst
-    descriptor.rst
-    exception.rst
+    entity/index.rst
+    request/index.rst
+    filter/index.rst
+    link/index.rst
+    source/index.rst
+    proxy/index.rst
+    destination/index.rst
+    transaction/index.rst
+    descriptor/index.rst
+    exception/index.rst
 
