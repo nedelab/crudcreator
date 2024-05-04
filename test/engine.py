@@ -11,13 +11,17 @@ if settings.database_type == DatabaseType.sqlite:
     engine_wrapper = SQLEngineSyncWrapper(engine=engine)
 elif settings.database_type == DatabaseType.postgres:
     engine = create_engine(
-        f"postgresql+pg8000://{settings.postgres_username}:{settings.postgres_password}@{settings.postgres_host}:{settings.postgres_port}/{settings.postgres_database}", echo=False)
+            f"postgresql+pg8000://{settings.postgres_username}:{settings.postgres_password}@{settings.postgres_host}:{settings.postgres_port}/{settings.postgres_database}",
+            echo=True,#for debug
+            hide_parameters=False,#for debug
+        )
     engine_sync = engine
     engine_wrapper = SQLEngineSyncWrapper(engine=engine)
 elif settings.database_type == DatabaseType.async_postgres:
     engine = create_async_engine(
-        f"postgresql+asyncpg://{settings.postgres_username}:{settings.postgres_password}@{settings.postgres_host}:{settings.postgres_port}/{settings.postgres_database}", 
-        echo=False,
+        f"postgresql+asyncpg://{settings.postgres_username}:{settings.postgres_password}@{settings.postgres_host}:{settings.postgres_port}/{settings.postgres_database}",
+        echo=True,#for debug
+        hide_parameters=False,#for debug
         poolclass=NullPool#TODO : remove (can't at the moment, otherwise the unit test TestClient crashes)
     )
     engine_sync = create_engine(

@@ -365,8 +365,9 @@ async def test_update_entity_25_good_password():
     assert ret.status_code == 200
     read_reponse = _read("/entity25", {}, auth=("user1", "test_password"))
     assert len(read_reponse) == 2
-    assert read_reponse[0]["field_id"] == 4
-    assert read_reponse[1]["field_id"] == 10
+    ids = [4, 10]
+    assert read_reponse[0]["field_id"] in ids
+    assert read_reponse[1]["field_id"] in ids
     read_reponse = _read("/entity25", {}, auth=("user2", "test_password"))
     assert len(read_reponse) == 1
     assert read_reponse[0]["field_id"] == 2

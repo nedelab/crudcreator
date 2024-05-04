@@ -7,6 +7,9 @@ These proxies are generic. They can be used regardless of the type of source and
     :depth: 2
     :local:
 
+|
+|
+
 .. _rename:
 
 Rename
@@ -35,6 +38,9 @@ Rename
     :members:
     :model-show-json: false
     :model-show-field-summary: false
+
+|
+|
 
 .. _recast_type:
 
@@ -76,26 +82,8 @@ RecastType
     :model-show-json: false
     :model-show-field-summary: false
 
-.. _add_filter:
-
-AddFilter
-------------------------------------------------------
-
-.. module:: crudcreator.proxy.proxy.AddFilter
-    :noindex:
-
-.. autopydantic_model::  AddFilter
-    :members:
-    :model-show-json: false
-    :model-show-field-summary: false
-
 |
 |
-
-.. autopydantic_model::  AddFilterParams
-    :members:
-    :model-show-json: false
-    :model-show-field-summary: false
 
 .. _soft_delete:
 
@@ -126,6 +114,8 @@ SoftDelete
     :model-show-json: false
     :model-show-field-summary: false
 
+|
+|
 
 AddOptions
 ------------------------------------------------------
@@ -146,6 +136,8 @@ AddOptions
     :model-show-json: false
     :model-show-field-summary: false
 
+|
+|
 
 AddDefault
 ------------------------------------------------------
@@ -167,48 +159,10 @@ AddDefault
     :model-show-field-summary: false
 
 
-.. _add_write_value:
 
-AddWriteValue
-------------------------------------------------------
-
-.. module:: crudcreator.proxy.proxy.AddWriteValue
-    :noindex:
-
-.. autopydantic_model::  AddWriteValue
-    :members:
-    :model-show-json: false
-    :model-show-field-summary: false
 
 |
 |
-
-.. autopydantic_model::  AddWriteValueParams
-    :members:
-    :model-show-json: false
-    :model-show-field-summary: false
-
-.. _add_id_value:
-
-AddIdValue
-------------------------------------------------------
-
-.. module:: crudcreator.proxy.proxy.AddIdValue
-    :noindex:
-
-.. autopydantic_model::  AddIdValue
-    :members:
-    :model-show-json: false
-    :model-show-field-summary: false
-
-|
-|
-
-.. autopydantic_model::  AddIdValueParams
-    :members:
-    :model-show-json: false
-    :model-show-field-summary: false
-
 
 GroupBy
 ------------------------------------------------------
@@ -229,6 +183,8 @@ GroupBy
     :model-show-json: false
     :model-show-field-summary: false
 
+|
+|
 
 GatherFields
 ------------------------------------------------------
@@ -249,14 +205,125 @@ GatherFields
     :model-show-json: false
     :model-show-field-summary: false
 
+|
+|
+
+Request Modifiers
+--------------------
+
+These proxies modify the CRUD request before passing it on to the next proxy.
+
+|
+|
+
+.. _add_id_value:
+
+AddIdValue
+^^^^^^^^^^^^^^
+
+.. module:: crudcreator.proxy.proxy.request_modifier.AddIdValue
+    :noindex:
+
+.. autopydantic_model::  AddIdValue
+    :members:
+    :model-show-json: false
+    :model-show-field-summary: false
+
+|
+|
+
+.. autopydantic_model::  AddIdValueParams
+    :members:
+    :model-show-json: false
+    :model-show-field-summary: false
+
+|
+|
+
+.. _add_write_value:
+
+AddWriteValue
+^^^^^^^^^^^^^^
+
+.. module:: crudcreator.proxy.proxy.request_modifier.AddWriteValue
+    :noindex:
+
+.. autopydantic_model::  AddWriteValue
+    :members:
+    :model-show-json: false
+    :model-show-field-summary: false
+
+|
+|
+
+.. autopydantic_model::  AddWriteValueParams
+    :members:
+    :model-show-json: false
+    :model-show-field-summary: false
+
+|
+|
+
+.. _add_filter:
+
+AddFilter
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. module:: crudcreator.proxy.proxy.request_modifier.AddFilter
+    :noindex:
+
+.. autopydantic_model::  AddFilter
+    :members:
+    :model-show-json: false
+    :model-show-field-summary: false
+
+|
+|
+
+.. autopydantic_model::  AddFilterParams
+    :members:
+    :model-show-json: false
+    :model-show-field-summary: false
+
+|
+|
+
+.. _add_sort:
+
+AddSort
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. module:: crudcreator.proxy.proxy.request_modifier.AddSort
+    :noindex:
+
+.. autopydantic_model::  AddSort
+    :members:
+    :model-show-json: false
+    :model-show-field-summary: false
+
+|
+|
+
+.. autopydantic_model::  AddSortParams
+    :members:
+    :model-show-json: false
+    :model-show-field-summary: false
+
+|
+|
 
 Firewalls
 --------------------
 
+These proxies restrict certain fields of the CRUD request.
+
+|
+|
+
 ReadFirewall
 ^^^^^^^^^^^^^^^^^^
 
-.. module:: crudcreator.proxy.proxy.ReadFirewall
+.. module:: crudcreator.proxy.proxy.firewall.ReadFirewall
     :noindex:
 
 .. autopydantic_model::  ReadFirewall
@@ -272,11 +339,13 @@ ReadFirewall
     :model-show-json: false
     :model-show-field-summary: false
 
+|
+|
 
 CreateFirewall
 ^^^^^^^^^^^^^^^^^^
 
-.. module:: crudcreator.proxy.proxy.CreateFirewall
+.. module:: crudcreator.proxy.proxy.firewall.CreateFirewall
     :noindex:
 
 .. autopydantic_model::  CreateFirewall
@@ -292,11 +361,13 @@ CreateFirewall
     :model-show-json: false
     :model-show-field-summary: false
 
+|
+|
 
 UpdateFirewall
 ^^^^^^^^^^^^^^^^^^
 
-.. module:: crudcreator.proxy.proxy.UpdateFirewall
+.. module:: crudcreator.proxy.proxy.firewall.UpdateFirewall
     :noindex:
 
 .. autopydantic_model::  UpdateFirewall
@@ -313,12 +384,15 @@ UpdateFirewall
     :model-show-field-summary: false
 
 
+|
+|
+
 .. _filter_firewall:
 
 FilterFirewall
 ^^^^^^^^^^^^^^^^^^
 
-.. module:: crudcreator.proxy.proxy.FilterFirewall
+.. module:: crudcreator.proxy.proxy.firewall.FilterFirewall
     :noindex:
 
 .. autopydantic_model::  FilterFirewall
@@ -334,9 +408,16 @@ FilterFirewall
     :model-show-json: false
     :model-show-field-summary: false
 
+|
+|
 
 Links
 --------------------
+
+These proxies enable several entities to interact with each other.
+
+|
+|
 
 .. _create_link:
 
@@ -367,6 +448,8 @@ CreateLink
     :model-show-json: false
     :model-show-field-summary: false
 
+|
+|
 
 .. _cascade_delete:
 
@@ -389,6 +472,8 @@ CascadeDelete
     :model-show-json: false
     :model-show-field-summary: false
 
+|
+|
 
 .. _cascade_create_and_update:
 

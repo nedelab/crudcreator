@@ -157,7 +157,11 @@ class Rename(AbstractCRUDableEntityTypeProxy):
                     transaction=params.transaction,
                     list_filter_instance=new_list_filter_instance,
                     list_read_field=new_list_read_field,
-                    dict_read_options=params.dict_read_options
+                    dict_read_options=params.dict_read_options,
+                    limit=params.limit,
+                    offset=params.offset,
+                    must_read_distinct=params.must_read_distinct,
+                    list_field_on_which_to_sort=params.list_field_on_which_to_sort,
                 )
             )
         ]

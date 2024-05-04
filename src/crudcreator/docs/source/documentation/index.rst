@@ -10,6 +10,7 @@ Documentation
     entity/index.rst
     request/index.rst
     filter/index.rst
+    sort/index.rst
     link/index.rst
     source/index.rst
     proxy/index.rst

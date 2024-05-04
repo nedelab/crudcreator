@@ -153,7 +153,11 @@ class AbstractCRUDableEntityType(BaseModel):
                         transaction=transaction, 
                         list_filter_instance=list_filter_on_id, 
                         list_read_field=self.interface.get_readable_field_name(),#TODO : bloqué s'il y a un champ dans la liste à updater qui n'est pas readable
-                        dict_read_options={}
+                        dict_read_options={},
+                        limit=1,
+                        offset=None,
+                        must_read_distinct=False,
+                        list_field_on_which_to_sort=[]
                     )
                 )
             ) > 0:

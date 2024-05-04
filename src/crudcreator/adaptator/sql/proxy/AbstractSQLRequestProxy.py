@@ -15,7 +15,6 @@ from ....Filter import FilterInstance
 from ....proxy.AbstractCRUDableEntityTypeProxy import AbstractCRUDableEntityTypeProxy
 from ..SQLColumnInspector import SQLColumnInspector
 from ....proxy.AbstractProxyParams import AbstractProxyParams
-from ..SQLEntityTypeInterface import SQLEntityTypeInterface
 from ....transaction.sql.SQLTransaction import SQLTransaction
 from ....schema import ReadParams, CreateParams, UpdateParams, DeleteParams
 from ..AbstractSQLEntityType import AbstractSQLEntityType
@@ -31,7 +30,7 @@ class AbstractSQLRequestProxy(AbstractSQLEntityType, AbstractCRUDableEntityTypeP
     """
 
     params: AbstractSQLRequestProxyParams
-    interface: CRUDableEntityTypeInterface#TODO : must be SQLEntityTypeInterface
+    interface: CRUDableEntityTypeInterface
     base: AbstractSQLEntityType
 
     async def get_inspector(self) -> SQLColumnInspector:

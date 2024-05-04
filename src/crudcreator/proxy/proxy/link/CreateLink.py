@@ -8,24 +8,13 @@ from ....FieldOfCRUDableEntityType import FieldOfCRUDableEntityType
 from ....Fields import Fields
 from ....Filter import FilterInstance
 from enum import Enum
-from ....Link import Link
+from ....Link import Link, LinkedField
 from ....LinkType import LinkType, Cardinality
 from sqlalchemy.sql import Select, Delete, Insert, Update
 from ...AbstractProxyParams import AbstractProxyParams
 from ....interface.CRUDableEntityTypeInterface import CRUDableEntityTypeInterface
 from ....transaction.AbstractTransaction import AbstractTransaction
 import functools
-
-class LinkedField(BaseModel):
-    field_name: str
-    """
-    The name of the current entity type's field to which the link is made.
-    """
-
-    link: Link
-    """
-    The link.
-    """
 
 class CreateLinkParams(AbstractProxyParams):
     """

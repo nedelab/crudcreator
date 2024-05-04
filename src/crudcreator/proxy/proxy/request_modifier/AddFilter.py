@@ -1,9 +1,9 @@
 from typing import Any
-from ..AbstractCRUDableEntityTypeProxy import AbstractCRUDableEntityTypeProxy
-from ...Filter import FilterInstance
-from ..AbstractProxyParams import AbstractProxyParams
-from ...transaction.AbstractTransaction import AbstractTransaction
-from ...schema import ReadParams, CreateParams, UpdateParams, DeleteParams
+from ...AbstractCRUDableEntityTypeProxy import AbstractCRUDableEntityTypeProxy
+from ....Filter import FilterInstance
+from ...AbstractProxyParams import AbstractProxyParams
+from ....transaction.AbstractTransaction import AbstractTransaction
+from ....schema import ReadParams, CreateParams, UpdateParams, DeleteParams
 
 class AddFilterParams(AbstractProxyParams):
     """
@@ -19,6 +19,11 @@ class AddFilterParams(AbstractProxyParams):
 class AddFilter(AbstractCRUDableEntityTypeProxy):
     """
     Adds hard-coded filter instances to the read CRUD request.
+
+    .. warning::
+
+        Does not perform a filter here, but adds the filter to the request
+        (so that it can be processed later by the source adaptator)
 
     Example of descriptor, which will return, to the user executing a read,
     only those entities whose "can_be_seen" field is set to True:
@@ -55,7 +60,11 @@ class AddFilter(AbstractCRUDableEntityTypeProxy):
                 transaction=params.transaction, 
                 list_filter_instance=params.list_filter_instance+self.params.list_filter_instance_to_add, 
                 list_read_field=params.list_read_field,
-                dict_read_options=params.dict_read_options
+                dict_read_options=params.dict_read_options,
+                limit=params.limit,
+                offset=params.offset,
+                must_read_distinct=params.must_read_distinct,
+                list_field_on_which_to_sort=params.list_field_on_which_to_sort,
             )
         )
 

@@ -35,18 +35,7 @@
     },
     {
         "name": "SQLSort",
-        "params": {
-            "list_field_to_sort": [
-                {
-                    "field_name": "sort1",
-                    "type": "asc"
-                },
-                {
-                    "field_name": "sort2",
-                    "type": "desc"
-                }
-            ]
-        }
+        "params": {}
     },
     {
         "name": "SQLFilter",
@@ -61,6 +50,21 @@
         "params": {
             "interface_name": "entity7",
             "translation_list": []
+        }
+    },
+    {
+        "name": "AddSort",
+        "params": {
+            "list_field_on_which_to_sort": [
+                {
+                    "field_name": "sort1",
+                    "type": "asc"
+                },
+                {
+                    "field_name": "sort2",
+                    "type": "desc"
+                }
+            ]
         }
     },
     {

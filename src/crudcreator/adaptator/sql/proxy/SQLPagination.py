@@ -2,25 +2,18 @@
 from typing import Any
 from .AbstractSQLRequestProxy import AbstractSQLRequestProxy, AbstractSQLRequestProxyParams
 from ....schema import ReadParams, CreateParams, UpdateParams, DeleteParams
+from sqlalchemy import Select
 
 class SQLPaginationParams(AbstractSQLRequestProxyParams):
     """
     SQLPagination proxy settings.
-    """
-
-    limit_option_name: str
-    """
-    The option that specifies the "limit" value to be added to the SQL query.
-    """
-
-    offset_option_name: str
-    """
-    The option that sets the offset value to be added to the SQL query.
+    Nothing.
     """
 
 class SQLPagination(AbstractSQLRequestProxy):
     """
-    Adds a "limit" and an "offset" to the SQL query, on option.
+    Transforms the "limit" and an "offset" in the CRUD query into "limit" and an "offset" SQL clauses 
+    and adds them to the SQL query.
 
     Example of descriptor :
 
@@ -29,10 +22,7 @@ class SQLPagination(AbstractSQLRequestProxy):
 
         {
             "name": "SQLPagination",
-            "params": {
-                "limit_option_name": "my_limit",
-                "offset_option_name": "my_offset"
-            }
+            "params": {}
         }
         
     """
@@ -42,13 +32,13 @@ class SQLPagination(AbstractSQLRequestProxy):
     SQLPagination proxy parameters.
     """
         
-    async def read(self, params: ReadParams) -> list[Any]:
+    async def read(self, params: ReadParams) -> Select:
         """
-        Retrieves the next proxy select, then adds the limit and offset clauses (if the options are set).
+        Retrieves the next proxy select, then adds the limit and offset clauses (if the params are set).
         """
         req = await self.base.read(params)
-        if self.params.limit_option_name in params.dict_read_options and params.dict_read_options[self.params.limit_option_name] is not None:
-            req = req.limit(params.dict_read_options[self.params.limit_option_name])
-        if self.params.offset_option_name in params.dict_read_options and params.dict_read_options[self.params.offset_option_name] is not None:
-            req = req.offset(params.dict_read_options[self.params.offset_option_name])
+        if params.limit is not None:
+            req = req.limit(params.limit)
+        if params.offset is not None:
+            req = req.offset(params.offset)
         return req

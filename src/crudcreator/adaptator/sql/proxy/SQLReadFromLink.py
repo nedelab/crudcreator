@@ -152,6 +152,7 @@ class SQLReadFromLink(AbstractSQLRequestProxy):
         params: ReadParams,
         inspector: SQLColumnInspector,
     ) -> Select:
+        #TODO : ajouter join seulement si un champ de la table dans la liste des lectures, ou des filtres, ou des sorts, etc
         for field in list_field:
             if (
                 field.link is not None and

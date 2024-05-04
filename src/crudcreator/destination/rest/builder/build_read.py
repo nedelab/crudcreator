@@ -6,6 +6,7 @@ from ....transaction.AbstractTransactionManager import AbstractTransactionManage
 from ....schema import ReadParams, CreateParams, UpdateParams, DeleteParams, UpdateOrCreateParams
 import inspect
 from .base import _BaseRESTCRUDBuilder
+from typing import Optional
 
 class _ReadRESTCRUDBuilder(_BaseRESTCRUDBuilder):
 
@@ -27,6 +28,8 @@ class _ReadRESTCRUDBuilder(_BaseRESTCRUDBuilder):
         :param filter_from_dependencies:
             A dictionary associating a dependency with a filter (which will not be provided
             directly by the API user).
+
+        TODO : sorts
 
         """
 
@@ -96,6 +99,9 @@ Return a list of {entity_type.interface.name}.
         async def route(
             filter: filter_data_model = Depends(),
             options: option_model = Depends(),
+            limit: Optional[int] = None,
+            offset: Optional[int] = None,
+            distinct: bool = False,
             filter_from_dependencies = Depends(filter_data_model_from_dependencies)
         ):   
             #on fusionne les dictionnaires de filtre donnés en paramètre par FastAPI
@@ -128,6 +134,10 @@ Return a list of {entity_type.interface.name}.
                         transaction=transaction, 
                         list_filter_instance=list_filter_instance, 
                         list_read_field=list_readable_field_name,
-                        dict_read_options=options.model_dump()
+                        dict_read_options=options.model_dump(),
+                        limit=limit,
+                        offset=offset,
+                        must_read_distinct=distinct,
+                        list_field_on_which_to_sort=[]#TODO
                     )
                 )

@@ -1,8 +1,8 @@
 
-from .AddFilter import AddFilter, AddFilterParams
+from .request_modifier.AddFilter import AddFilter, AddFilterParams
 from .AddOptions import AddOptions, AddOptionsParams
-from .FilterFirewall import FilterFirewall, FilterFirewallParams
-from .ReadFirewall import ReadFirewall, ReadFirewallParams
+from .firewall.FilterFirewall import FilterFirewall, FilterFirewallParams
+from .firewall.ReadFirewall import ReadFirewall, ReadFirewallParams
 from .Rename import Rename, RenameParams
 from .SoftDelete import SoftDelete, SoftDeleteParams
 from .type.RecastType import RecastType, RecastTypeParams
@@ -13,10 +13,12 @@ from .link.CascadeCreateAndUpdate import CascadeCreateAndUpdate, CascadeCreateAn
 from .GroupBy import GroupByParams, GroupBy
 from .AddDefault import AddDefault, AddDefaultParams
 from .GatherFields import GatherFields, GatherFieldsParams
-from .AddWriteValue import AddWriteValue, AddWriteValueParams
-from .UpdateFirewall import UpdateFirewall, UpdateFirewallParams
-from .CreateFirewall import CreateFirewall, CreateFirewallParams
-from .AddIdValue import AddIdValue, AddIdValueParams
+from .request_modifier.AddWriteValue import AddWriteValue, AddWriteValueParams
+from .firewall.UpdateFirewall import UpdateFirewall, UpdateFirewallParams
+from .firewall.CreateFirewall import CreateFirewall, CreateFirewallParams
+from .request_modifier.AddIdValue import AddIdValue, AddIdValueParams
+from .request_modifier.AddSort import AddSort, AddSortParams
+from .firewall.SortFirewall import SortFirewall, SortFirewallParams
 
 __all__ = [
     AddFilter, AddFilterParams,
@@ -35,5 +37,7 @@ __all__ = [
     AddWriteValue, AddWriteValueParams,
     UpdateFirewall, UpdateFirewallParams,
     CreateFirewall, CreateFirewallParams,
-    AddIdValue, AddIdValueParams
+    AddIdValue, AddIdValueParams,
+    AddSort, AddSortParams,
+    SortFirewall, SortFirewallParams
 ]

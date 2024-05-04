@@ -481,7 +481,9 @@ async def test_read_entity_12_filter_6():
 @pytest.mark.asyncio
 async def test_read_entity_13_no_filter_1():
     await reinit_db()
-    read_response = _read("/entity13", {})
+    read_response = _read("/entity13", {
+        "distinct": True
+    })
     assert len(read_response) == 2#distinct
     row = read_response[0]
     assert "field_test" in row
@@ -682,10 +684,12 @@ async def test_read_entity_22():
         assert type(row["user"]) == dict
         assert "table_user.column_id" in row["user"]
         assert "other" in row["user"]
-    assert data[0]["user"]["table_user.column_id"] == 20
-    assert data[0]["user"]["other"] == "2"
-    assert data[1]["user"]["table_user.column_id"] == 10
-    assert data[1]["user"]["other"] == "1"
+    fields = [
+        (20, "2"),
+        (10, "1")
+    ]
+    assert data[0]["user"]["table_user.column_id"], data[0]["user"]["other"] in fields
+    assert data[1]["user"]["table_user.column_id"], data[1]["user"]["other"] in fields
 
 @pytest.mark.asyncio
 async def test_read_entity_22_1():

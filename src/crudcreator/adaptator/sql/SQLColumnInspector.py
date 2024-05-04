@@ -6,7 +6,7 @@ from sqlalchemy.exc import ProgrammingError, NoResultFound
 from pydantic import BaseModel, ConfigDict
 from typing import Optional, Any
 from .engine_wrapper.SQLEngineWrapper import AbstractSQLEngineWrapper
-from .SQLEntityTypeInterface import SQLEntityTypeInterface
+from ...interface.CRUDableEntityTypeInterface import CRUDableEntityTypeInterface
 from .SQLColumn import SQLColumn
 
 
@@ -69,7 +69,7 @@ class SQLColumnInspector(BaseModel):
     @staticmethod
     async def build_from_interface(
         sqlalchemy_engine_wrapper: AbstractSQLEngineWrapper,
-        source_interface: SQLEntityTypeInterface
+        source_interface: CRUDableEntityTypeInterface
     ):
         """
         Builds the inspector.

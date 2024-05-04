@@ -25,6 +25,17 @@ class Link(BaseModel):
     Link cardinality.
     """
 
+class LinkedField(BaseModel):
+    field_name: str
+    """
+    The name of the current entity type's field to which the link is made.
+    """
+
+    link: Link
+    """
+    The link.
+    """
+
 from .AbstractCRUDableEntityType import AbstractCRUDableEntityType
 from .FieldOfCRUDableEntityType import FieldOfCRUDableEntityType
 from .Fields import Fields

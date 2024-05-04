@@ -1,23 +1,23 @@
 from typing import Any
 from pydantic import BaseModel, create_model
 from typing import Optional
-from ...Sentinel import Sentinel
-from ..AbstractCRUDableEntityTypeProxy import AbstractCRUDableEntityTypeProxy
-from...AbstractCRUDableEntityType import AbstractCRUDableEntityType
-from ...FieldOfCRUDableEntityType import FieldOfCRUDableEntityType
-from ...Fields import Fields
-from ...Filter import FilterType, FilterInstance
-from ..AbstractProxyParams import AbstractProxyParams
-from ...interface.CRUDableEntityTypeInterface import CRUDableEntityTypeInterface
-from ...transaction.AbstractTransaction import AbstractTransaction
-from ...schema import ReadParams, CreateParams, UpdateParams, DeleteParams
+from ....Sentinel import Sentinel
+from ...AbstractCRUDableEntityTypeProxy import AbstractCRUDableEntityTypeProxy
+from ....AbstractCRUDableEntityType import AbstractCRUDableEntityType
+from ....FieldOfCRUDableEntityType import FieldOfCRUDableEntityType
+from ....Fields import Fields
+from ....Filter import FilterType, FilterInstance
+from ...AbstractProxyParams import AbstractProxyParams
+from ....interface.CRUDableEntityTypeInterface import CRUDableEntityTypeInterface
+from ....transaction.AbstractTransaction import AbstractTransaction
+from ....schema import ReadParams, CreateParams, UpdateParams, DeleteParams
 import functools
 from collections import defaultdict
 
 class AllowedFilterOnField(BaseModel):
     field_name: str
     """
-    The name of the filter on which the user can filter.
+    The name of the field on which the user can filter.
     """
 
     allowed_filter_type: FilterType

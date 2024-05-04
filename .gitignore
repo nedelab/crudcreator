@@ -13,3 +13,5 @@ data
 dist
 .pypirc
 *.egg-info
+test.txt
+diff.txt

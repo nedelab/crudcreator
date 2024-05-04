@@ -15,7 +15,6 @@ from ...Sentinel import Sentinel
 from ...Filter import FilterInstance
 from ...adaptator.sql.SQLColumnInspector import SQLColumnInspector
 from ...adaptator.sql.type_convertor.TypeConvertor import TypeConvertor
-from ...adaptator.sql.SQLEntityTypeInterface import SQLEntityTypeInterface
 from ...transaction.sql.SQLTransaction import SQLTransaction
 from ..AbstractSourceParams import AbstractSourceParams
 from ...adaptator.sql.engine_wrapper.SQLEngineWrapper import AbstractSQLEngineWrapper

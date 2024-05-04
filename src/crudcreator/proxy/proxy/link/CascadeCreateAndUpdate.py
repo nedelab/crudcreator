@@ -117,7 +117,11 @@ class CascadeCreateAndUpdate(AbstractCRUDableEntityTypeProxy):
                     for field_name in params.dict_ids
                 ],
                 list_read_field=self.interface.get_readable_field_name(),
-                dict_read_options={}
+                dict_read_options={},
+                limit=None,
+                offset=None,
+                must_read_distinct=False,
+                list_field_on_which_to_sort=[],
             )
         )
         for row in list_row:

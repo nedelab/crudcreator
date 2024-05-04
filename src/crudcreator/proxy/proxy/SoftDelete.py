@@ -114,7 +114,11 @@ class SoftDelete(AbstractCRUDableEntityTypeProxy):
                     for field_name, v in self.params.value_if_deleted_index.items()
                 ],
                 list_read_field=params.list_read_field,
-                dict_read_options=params.dict_read_options
+                dict_read_options=params.dict_read_options,
+                limit=params.limit,
+                offset=params.offset,
+                must_read_distinct=params.must_read_distinct,
+                list_field_on_which_to_sort=params.list_field_on_which_to_sort,
             )
         )
     

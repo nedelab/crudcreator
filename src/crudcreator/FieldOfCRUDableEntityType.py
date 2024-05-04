@@ -1,6 +1,7 @@
 from pydantic import BaseModel, ConfigDict
 from typing import Optional, Any, Type
 from .Filter import FilterType
+from .Sort import SortType
 from .Sentinel import Sentinel
 
 class FieldOfCRUDableEntityType(BaseModel):
@@ -22,6 +23,11 @@ class FieldOfCRUDableEntityType(BaseModel):
     list_allowed_filter_type: Optional[list[FilterType]] = None
     """
     How can entities be filtered when a filter is specified on this field?
+    """
+
+    list_allowed_sort_type: Optional[list[SortType]] = None
+    """
+    How can entities be sorted when a sort is specified on this field?
     """
 
     can_be_created: Optional[bool] = False

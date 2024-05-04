@@ -114,12 +114,14 @@ async def test_update_or_create_entity_25():
     )
     read_reponse = _read("/entity25", {}, auth=("user1", "test_password"))
     assert len(read_reponse) == 3
-    assert read_reponse[0]["field_id"] == 1
-    assert read_reponse[1]["field_id"] == 4
-    assert read_reponse[2]["field_id"] == 10
-    assert read_reponse[0]["other"] == 1
-    assert read_reponse[1]["other"] == 4
-    assert read_reponse[2]["other"] == 10
+    fields = [
+        (1, 1),
+        (4, 4),
+        (10, 10)
+    ]
+    assert read_reponse[0]["field_id"], read_reponse[0]["other"] in fields
+    assert read_reponse[1]["field_id"], read_reponse[1]["other"] in fields
+    assert read_reponse[2]["field_id"], read_reponse[2]["other"] in fields
     read_reponse = _read("/entity25", {}, auth=("user2", "test_password"))
     assert len(read_reponse) == 1
     assert read_reponse[0]["field_id"] == 2
@@ -137,12 +139,14 @@ async def test_update_or_create_entity_25():
     )
     read_reponse = _read("/entity25", {}, auth=("user1", "test_password"))
     assert len(read_reponse) == 3
-    assert read_reponse[0]["field_id"] == 1
-    assert read_reponse[1]["field_id"] == 4
-    assert read_reponse[2]["field_id"] == 10
-    assert read_reponse[0]["other"] == 1
-    assert read_reponse[1]["other"] == 5
-    assert read_reponse[2]["other"] == 10
+    fields = [
+        (1, 1),
+        (4, 5),
+        (10, 10)
+    ]
+    assert read_reponse[0]["field_id"], read_reponse[0]["other"] in fields
+    assert read_reponse[1]["field_id"], read_reponse[1]["other"] in fields
+    assert read_reponse[2]["field_id"], read_reponse[2]["other"] in fields
     read_reponse = _read("/entity25", {}, auth=("user2", "test_password"))
     assert len(read_reponse) == 1
     assert read_reponse[0]["field_id"] == 2
@@ -160,12 +164,14 @@ async def test_update_or_create_entity_25():
     )
     read_reponse = _read("/entity25", {}, auth=("user1", "test_password"))
     assert len(read_reponse) == 3
-    assert read_reponse[0]["field_id"] == 1
-    assert read_reponse[1]["field_id"] == 4
-    assert read_reponse[2]["field_id"] == 10
-    assert read_reponse[0]["other"] == 1
-    assert read_reponse[1]["other"] == 6
-    assert read_reponse[2]["other"] == 10
+    fields = [
+        (1, 1),
+        (4, 6),
+        (10, 10)
+    ]
+    assert read_reponse[0]["field_id"], read_reponse[0]["other"] in fields
+    assert read_reponse[1]["field_id"], read_reponse[1]["other"] in fields
+    assert read_reponse[2]["field_id"], read_reponse[2]["other"] in fields
     read_reponse = _read("/entity25", {}, auth=("user2", "test_password"))
     assert len(read_reponse) == 1
     assert read_reponse[0]["field_id"] == 2

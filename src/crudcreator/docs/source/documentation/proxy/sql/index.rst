@@ -23,14 +23,14 @@ Abstract classes
     :model-show-json: false
     :model-show-field-summary: false
 
-|
-|
 
 .. autopydantic_model:: AbstractSQLRequestProxyParams
     :members:
     :model-show-json: false
     :model-show-field-summary: false
 
+|
+|
 
 Concrete classes
 ---------------------------
@@ -46,13 +46,13 @@ SQLRequestConstructor
     :model-show-json: false
     :model-show-field-summary: false
 
-|
-|
-
 .. autopydantic_model:: SQLRequestConstructorParams
     :members:
     :model-show-json: false
     :model-show-field-summary: false
+
+|
+|
 
 SQLFilter
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -65,14 +65,13 @@ SQLFilter
     :model-show-json: false
     :model-show-field-summary: false
 
-|
-|
-
 .. autopydantic_model:: SQLFilterParams
     :members:
     :model-show-json: false
     :model-show-field-summary: false
 
+|
+|
 
 SQLSort
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -85,9 +84,6 @@ SQLSort
     :model-show-json: false
     :model-show-field-summary: false
 
-|
-|
-
 .. autopydantic_model:: SQLSortParams
     :members:
     :model-show-json: false
@@ -95,17 +91,6 @@ SQLSort
 
 |
 |
-
-.. autopydantic_model:: FieldToSort
-    :members:
-    :model-show-json: false
-    :model-show-field-summary: false
-
-|
-|
-
-.. autoclass:: SortType()
-    :members:
 
 SQLPagination
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -118,14 +103,13 @@ SQLPagination
     :model-show-json: false
     :model-show-field-summary: false
 
-|
-|
-
 .. autopydantic_model:: SQLPaginationParams
     :members:
     :model-show-json: false
     :model-show-field-summary: false
 
+|
+|
 
 .. _sql_link:
 
@@ -140,6 +124,9 @@ SQLCreateLink
     :model-show-json: false
     :model-show-field-summary: false
 
+|
+|
+
 .. _sql_read_from_link:
 
 SQLReadFromLink
@@ -153,22 +140,20 @@ SQLReadFromLink
     :model-show-json: false
     :model-show-field-summary: false
 
-|
-|
 
 .. autopydantic_model:: SQLReadFromLinkParams
     :members:
     :model-show-json: false
     :model-show-field-summary: false
 
-|
-|
 
 .. autopydantic_model:: SQLActivateEntityOnlyOnOption
     :members:
     :model-show-json: false
     :model-show-field-summary: false
 
+|
+|
 
 SQLRequestExecutor
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -181,8 +166,6 @@ SQLRequestExecutor
     :model-show-json: false
     :model-show-field-summary: false
 
-|
-|
 
 .. autopydantic_model:: SQLRequestExecutorParams
     :members:

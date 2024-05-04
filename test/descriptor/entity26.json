@@ -30,10 +30,7 @@
     },
     {
         "name": "SQLPagination",
-        "params": {
-            "limit_option_name": "limit",
-            "offset_option_name": "offset"
-        }
+        "params": {}
     },
     {
         "name": "SQLRequestExecutor",
@@ -59,25 +56,6 @@
         "name": "FilterFirewall",
         "params": {
             "allowed_filter_on_fields": []
-        }
-    },
-    {
-        "name": "AddOptions",
-        "params": {
-            "list_read_options": [
-                {
-                    "name": "limit",
-                    "type": "int",
-                    "default": null,
-                    "is_mandatory": false
-                },
-                {
-                    "name": "offset",
-                    "type": "int",
-                    "default": null,
-                    "is_mandatory": false
-                }
-            ]
         }
     }
 ]

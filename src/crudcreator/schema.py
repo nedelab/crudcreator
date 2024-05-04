@@ -3,12 +3,15 @@ from pydantic import BaseModel
 from .transaction.AbstractTransaction import AbstractTransaction
 from .transaction.AbstractTransactionManager import AbstractTransactionManager
 from .Filter import FilterInstance
-from typing import Any
+from .Sort import FieldToSort
+from typing import Any, Optional
 
 class ReadParams(BaseModel):
     """
     The parameters expected by the *read* method of the entity types.
     Contains the information required for a CRUD read request.
+
+    Convention is as follow : filters are applied first, then sorts, and then limit/offset (same convention in SQL).
     """
 
     transaction: AbstractTransaction
@@ -24,6 +27,26 @@ class ReadParams(BaseModel):
     list_read_field: list[str]
     """
     Fields to be read.
+    """
+
+    list_field_on_which_to_sort: list[FieldToSort]
+    """
+    The list of sort to apply to the result
+    """
+
+    limit: Optional[int]
+    """
+    Maximum number of entities to read.
+    """
+
+    offset: Optional[int]
+    """
+    The number of entities to pass before starting to read.
+    """
+
+    must_read_distinct: bool
+    """
+    The request must return only entities with distinct read values ?
     """
 
     dict_read_options: dict[str, Any]

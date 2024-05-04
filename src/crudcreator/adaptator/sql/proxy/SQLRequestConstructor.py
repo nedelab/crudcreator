@@ -23,11 +23,7 @@ from sqlalchemy.ext.asyncio import AsyncEngine
 class SQLRequestConstructorParams(AbstractSQLRequestProxyParams):
     """
     SQLRequestConstructor proxy parameters.
-    """
-
-    read_distinct: bool
-    """
-    Should select indicate "distinct"?
+    Nothing.
     """
     
 class SQLRequestConstructor(AbstractSQLRequestProxy):
@@ -42,9 +38,7 @@ class SQLRequestConstructor(AbstractSQLRequestProxy):
 
         {
             "name": "SQLRequestConstructor",
-            "params": {
-                "read_distinct": false
-            }
+            "params": {}
         }
     """
 
@@ -70,13 +64,13 @@ class SQLRequestConstructor(AbstractSQLRequestProxy):
             if field_name in (await self.get_inspector()).index_sqlalchemy_column
             and field_name in self.interface.fields.index_field_by_name
         ])  
-        if self.params.read_distinct:
+        if params.must_read_distinct:
             req = req.distinct()
         return req
     
     async def create(self, params: CreateParams) -> Insert:
         """
-        Builds a simple insert,
+        Builds a simple "insert",
         whose list of SQL columns corresponds to the list of "dict_creator_value" fields
         given as parameters to the CRUD request.
         """
