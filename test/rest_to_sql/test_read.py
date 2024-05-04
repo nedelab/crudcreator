@@ -5,14 +5,15 @@ import json
 import pytest
 
 
-def _read(route: str, filters: dict, **kwargs):
+def _read(route: str, filters: dict, status_code: int = 200, **kwargs):
     with TestClient(app) as client:
         ret = client.get(route, params=filters, **kwargs)
-        assert ret.status_code == 200
-        read_response = ret.json()
-        print(read_response)
-        assert type(read_response) == list
-        return read_response
+        assert ret.status_code == status_code
+        if status_code == 200:
+            read_response = ret.json()
+            print(read_response)
+            assert type(read_response) == list
+            return read_response
     
 
 def _check_read_response(list_row):
@@ -484,6 +485,38 @@ async def test_read_entity_13_no_filter_1():
     read_response = _read("/entity13", {
         "distinct": True
     })
+    assert len(read_response) == 2#no possible distinct
+    row = read_response[0]
+    assert "field_test" in row
+    assert row["field_test"] == "test"
+    row = read_response[1]
+    assert "field_test" in row
+    assert row["field_test"] == "test2"
+
+@pytest.mark.asyncio
+async def test_read_entity_13_bis_no_filter_1():
+    await reinit_db()
+    read_response = _read(
+        "/entity13_bis", 
+        {
+            "distinct": True
+        }, 
+        #TODO : check schema, cannot ask distinct
+    )
+    assert len(read_response) == 3#no distinct
+
+@pytest.mark.asyncio
+async def test_read_entity_13_ter_no_filter_1():
+    await reinit_db()
+    read_response = _read(
+        "/entity13_ter", 
+        {
+            "distinct": False
+        }, 
+        #TODO : check schema, cannot ask distinct
+    )
+    assert len(read_response) == 2#distinct
+    read_response = _read("/entity13_ter", {})
     assert len(read_response) == 2#distinct
     row = read_response[0]
     assert "field_test" in row
@@ -492,6 +525,19 @@ async def test_read_entity_13_no_filter_1():
     assert "field_test" in row
     assert row["field_test"] == "test2"
 
+@pytest.mark.asyncio
+async def test_read_entity_13_quater_no_filter_1():
+    await reinit_db()
+    read_response = _read(
+        "/entity13_quater", 
+        {
+            "distinct": False
+        }, 
+        #TODO : check schema, cannot ask distinct
+    )
+    assert len(read_response) == 3# no distinct
+    read_response = _read("/entity13_quater", {"distinct": True})
+    assert len(read_response) == 3#no distinct
 
 @pytest.mark.asyncio
 async def test_read_entity_16_1():

@@ -6,6 +6,7 @@
         },
         "interface": {
             "name": "table3",
+            "can_indicate_read_distinct": true,
             "fields": [
                 {
                     "name": "column_to_be_joined"

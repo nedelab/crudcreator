@@ -5,14 +5,14 @@
             "engine_wrapper": "$engine_wrapper$"
         },
         "interface": {
-            "name": "table15",
+            "name": "table13",
             "can_indicate_read_distinct": true,
             "fields": [
                 {
                     "name": "column_id"
                 },
                 {
-                    "name": "user_id"
+                    "name": "column_test"
                 }
             ]
         }
@@ -22,35 +22,6 @@
         "params": {
             "read_distinct": true
         }
-    },
-    {
-        "name": "SQLCreateLink",
-        "params": {
-            "interface_merge": true,
-            "list_linked_field": [
-                {
-                    "field_name": "user_id",
-                    "link": {
-                        "entity_type_linked_to": "$user_sql$",
-                        "field_name_linked_to": "user_id",
-                        "type": {
-                            "source": {
-                                "min": "one",
-                                "max": "one"
-                            },
-                            "dest": {
-                                "min": "one",
-                                "max": "one"
-                            }
-                        }
-                    }
-                }
-            ]
-        }
-    },
-    {
-        "name": "SQLReadFromLink",
-        "params": {}
     },
     {
         "name": "SQLFilter",
@@ -63,11 +34,15 @@
     {
         "name": "Rename",
         "params": {
-            "interface_name": "entity15",
+            "interface_name": "entity13_quater",
             "translation_list": [
                 {
                     "source": "column_id",
                     "destination": "field_id"
+                },
+                {
+                    "source": "column_test",
+                    "destination": "field_test"
                 }
             ]
         }
@@ -75,7 +50,9 @@
     {
         "name": "ReadFirewall",
         "params": {
-            "list_readable_field_name": ["user_id", "field_id", "table_user.column_id", "other"]
+            "list_readable_field_name": [
+                "field_test"
+            ]
         }
     },
     {
@@ -83,13 +60,20 @@
         "params": {
             "allowed_filter_on_fields": [
                 {
-                    "field_name": "username",
+                    "field_name": "field_test",
                     "allowed_filter_type": {
                         "filtration_type": "equal", 
-                        "is_mandatory": true
+                        "is_mandatory": false,
+                        "default": null
                     }
                 }
             ]
+        }
+    },
+    {
+        "name": "ReadDistinctFirewall",
+        "params": {
+            "can_indicate_read_distinct": false
         }
     }
 ]

@@ -6,6 +6,7 @@
         },
         "interface": {
             "name": "$table1_var$",
+            "can_indicate_read_distinct": true,
             "fields": [
                 {
                     "name": "column_to_join"

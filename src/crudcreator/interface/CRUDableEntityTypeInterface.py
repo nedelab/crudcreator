@@ -21,6 +21,11 @@ class CRUDableEntityTypeInterface(BaseModel):
     The fields that entities of this type will have.
     """
 
+    can_indicate_read_distinct: bool
+    """
+    Can the user specify that only entities with a distinct value are to be read?
+    """
+
     list_read_options: list[OptionModel] = []
     """
     Customizable options for crud actions (index name->type)

@@ -312,6 +312,30 @@ AddSort
 |
 |
 
+.. _read_distinct_proxy:
+
+ReadDistinct
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. module:: crudcreator.proxy.proxy.request_modifier.ReadDistinct
+    :noindex:
+
+.. autopydantic_model::  ReadDistinct
+    :members:
+    :model-show-json: false
+    :model-show-field-summary: false
+
+|
+|
+
+.. autopydantic_model::  ReadDistinctParams
+    :members:
+    :model-show-json: false
+    :model-show-field-summary: false
+
+|
+|
+
 Firewalls
 --------------------
 
@@ -407,6 +431,29 @@ FilterFirewall
     :members:
     :model-show-json: false
     :model-show-field-summary: false
+
+|
+|
+
+ReadDistinctFirewall
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. module:: crudcreator.proxy.proxy.firewall.ReadDistinctFirewall
+    :noindex:
+
+.. autopydantic_model::  ReadDistinctFirewall
+    :members:
+    :model-show-json: false
+    :model-show-field-summary: false
+
+|
+|
+
+.. autopydantic_model::  ReadDistinctFirewallParams
+    :members:
+    :model-show-json: false
+    :model-show-field-summary: false
+
 
 |
 |

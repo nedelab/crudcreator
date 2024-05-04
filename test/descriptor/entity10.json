@@ -6,6 +6,7 @@
         },
         "interface": {
             "name": "table10",
+            "can_indicate_read_distinct": true,
             "fields": [
                 {
                     "name": "column_pk_becomes_not_pk",

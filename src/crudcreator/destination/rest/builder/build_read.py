@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, HTTPException, status, params
+from fastapi import APIRouter, Depends, HTTPException, status, params, Query
 from ....AbstractCRUDableEntityType import AbstractCRUDableEntityType
 from ....Fields import Fields
 from ....Filter import FilterInstance, FilterType, FilterationEnum
@@ -7,6 +7,7 @@ from ....schema import ReadParams, CreateParams, UpdateParams, DeleteParams, Upd
 import inspect
 from .base import _BaseRESTCRUDBuilder
 from typing import Optional
+from pydantic import create_model
 
 class _ReadRESTCRUDBuilder(_BaseRESTCRUDBuilder):
 
@@ -33,13 +34,13 @@ class _ReadRESTCRUDBuilder(_BaseRESTCRUDBuilder):
 
         """
 
-        #le model pydantic des filtres renseignés directement par l'utilisateur de l'API
+        #the pydantic model of filters entered directly by the API user
         filter_data_model = entity_type.interface.get_sub_interface(
             f"submodel_filter_{entity_type.interface.name}",
             [field.name for field in entity_type.interface.get_filterable_field() if field.name not in filter_from_dependencies]
         ).get_filter_data_model(entity_type)
 
-        #le model pydantic des filtres renseignés par dépendance FastAPI
+        #the pydantic model of filters defined by FastAPI dependencies
         filter_data_interface_from_dependencies = entity_type.interface.get_sub_interface(
             f"submodel_filter_from_dependencies_{entity_type.interface.name}",
             [field.name for field in entity_type.interface.get_filterable_field() if field.name in filter_from_dependencies]
@@ -53,25 +54,34 @@ class _ReadRESTCRUDBuilder(_BaseRESTCRUDBuilder):
                 )
                 for allower_filter_type in new_field.list_allowed_filter_type
                 
-            ]#TODO : ne fonctionne que si un seul filtre sur le champ
-            #TODO : supprime aussi la valeur par défaut du filtre
+            ]#TODO : works only if a single filter on the field
+            #TODO : also deletes the default filter value
             list_new_field.append(new_field)
         filter_data_interface_from_dependencies.fields = Fields.build(list_new_field)
         filter_data_model_from_dependencies = filter_data_interface_from_dependencies.get_filter_data_model()
         
-        #le model pydantic de la réponse de l'API
+        #the pydantic model of API response
         response_model = entity_type.interface.get_read_response_data_model()
 
-        #le modèle pydantic des options de la route
+        #the pydantic route options model
         option_model = entity_type.interface.get_read_options_data_model()
 
         list_crud_field_filter = entity_type.interface.get_filterable_field()
         list_readable_field_name = [
             field.name
             for field in entity_type.interface.get_readable_field()
-        ]#en REST, on lit tous les champs
+        ]#in REST, all fields are read
 
-        #on construit la description des filtres de la route
+        other_route_params = {}
+        if entity_type.interface.can_indicate_read_distinct:
+            other_route_params = {"distinct": (bool, False)}
+
+        other_route_params_model = create_model(
+                f"other_route_params_{entity_type.interface.name}",
+                **other_route_params
+            )
+
+        #build the route filter description
         description_possible_filter = ""
         if len(list_crud_field_filter) > 0:
             description_filter_list = "\n\n".join([
@@ -101,8 +111,8 @@ Return a list of {entity_type.interface.name}.
             options: option_model = Depends(),
             limit: Optional[int] = None,
             offset: Optional[int] = None,
-            distinct: bool = False,
-            filter_from_dependencies = Depends(filter_data_model_from_dependencies)
+            filter_from_dependencies = Depends(filter_data_model_from_dependencies),
+            other_params: other_route_params_model = Depends()
         ):   
             #on fusionne les dictionnaires de filtre donnés en paramètre par FastAPI
             filter_data = filter.model_dump() | filter_from_dependencies.model_dump()
@@ -137,7 +147,7 @@ Return a list of {entity_type.interface.name}.
                         dict_read_options=options.model_dump(),
                         limit=limit,
                         offset=offset,
-                        must_read_distinct=distinct,
+                        must_read_distinct=other_params.distinct if entity_type.interface.can_indicate_read_distinct else False,
                         list_field_on_which_to_sort=[]#TODO
                     )
                 )

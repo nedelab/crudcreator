@@ -5,15 +5,14 @@
             "engine_wrapper": "$engine_wrapper$"
         },
         "interface": {
-            "name": "table4",
-            "can_indicate_read_distinct": true,
+            "name": "table13",
+            "can_indicate_read_distinct": false,
             "fields": [
                 {
-                    "name": "column_id",
-                    "is_id_field": true
+                    "name": "column_id"
                 },
                 {
-                    "name": "column_byte"
+                    "name": "column_test"
                 }
             ]
         }
@@ -21,7 +20,7 @@
     {
         "name": "SQLRequestConstructor",
         "params": {
-            "read_distinct": false
+            "read_distinct": true
         }
     },
     {
@@ -35,23 +34,40 @@
     {
         "name": "Rename",
         "params": {
-            "interface_name": "entity4",
+            "interface_name": "entity13_bis",
             "translation_list": [
                 {
                     "source": "column_id",
                     "destination": "field_id"
                 },
                 {
-                    "source": "column_byte",
-                    "destination": "field_byte"
+                    "source": "column_test",
+                    "destination": "field_test"
                 }
+            ]
+        }
+    },
+    {
+        "name": "ReadFirewall",
+        "params": {
+            "list_readable_field_name": [
+                "field_test"
             ]
         }
     },
     {
         "name": "FilterFirewall",
         "params": {
-            "allowed_filter_on_fields": []
+            "allowed_filter_on_fields": [
+                {
+                    "field_name": "field_test",
+                    "allowed_filter_type": {
+                        "filtration_type": "equal", 
+                        "is_mandatory": false,
+                        "default": null
+                    }
+                }
+            ]
         }
     }
 ]
