@@ -2,6 +2,7 @@ from typing import Any
 from ..AbstractCRUDableEntityType import AbstractCRUDableEntityType
 from ..Fields import Fields
 from .AbstractSourceParams import AbstractSourceParams
+from ..interface.CRUDableEntityTypeInterface import CRUDableEntityTypeInterface
 
 class AbstractCRUDableEntityTypeSource(AbstractCRUDableEntityType):
     """
@@ -14,6 +15,26 @@ class AbstractCRUDableEntityTypeSource(AbstractCRUDableEntityType):
     Parameters for customizing the source module.
     It's up to the AbstractSourceParams implementations to build themselves as they should.
     """
+
+    @classmethod
+    def build(
+        cls,
+        source_params: AbstractSourceParams,
+        interface: CRUDableEntityTypeInterface
+    ) -> "AbstractCRUDableEntityTypeSource":
+        """
+        Method to call to instantiate a source.
+
+        :param source_params:
+            See above.
+
+        :param interface:
+            See above.
+        """
+        return cls(
+            interface=interface,
+            params=source_params
+        )
     
     def complete(self) -> "AbstractCRUDableEntityTypeSource":
         """

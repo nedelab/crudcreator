@@ -72,5 +72,6 @@ def linkcode_resolve(domain, info):
     return f"https://github.com/nedelab/crudcreator/tree/master/src/{file_path}.py"
 
 import crudcreator.proxy.proxy#https://github.com/pydantic/pydantic/discussions/7763#discussioncomment-8417097
+import crudcreator.adaptator.sql.SimpleSQLAdaptator
 import crudcreator.source.source.SQLSource
 import crudcreator.adaptator.sql.proxy.SQLFilter

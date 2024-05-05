@@ -1,11 +1,12 @@
 [
     {
-        "name": "SQLSource",
+        "name": "SimpleSQLAdaptator",
         "params": {
             "engine_wrapper": "$engine_wrapper$"
         },
         "interface": {
             "name": "book",
+            "can_indicate_read_distinct": true,
             "fields": [
                 {
                     "name": "book_id",
@@ -27,20 +28,6 @@
                 }
             ]
         }
-    },
-    {
-        "name": "SQLRequestConstructor",
-        "params": {
-            "read_distinct": false
-        }
-    },
-    {
-        "name": "SQLFilter",
-        "params": {}
-    },
-    {
-        "name": "SQLRequestExecutor",
-        "params": {}
     },
     {
         "name": "FilterFirewall",

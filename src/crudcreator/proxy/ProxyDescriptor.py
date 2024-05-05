@@ -15,7 +15,7 @@ class ProxyDescriptor(AbstractDescriptor[AbstractCRUDableEntityTypeProxy, Abstra
 
     addons: dict[str, Type[AbstractCRUDableEntityTypeProxy]]
 
-    def get_index(self) -> AbstractCRUDableEntityTypeProxy:
+    def get_index(self) -> dict[str, AbstractCRUDableEntityTypeProxy]:
         return proxy_index
     
     def build(self) -> AbstractCRUDableEntityTypeProxy:

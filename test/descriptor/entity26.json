@@ -1,6 +1,6 @@
 [
     {
-        "name": "SQLSource",
+        "name": "SimpleSQLAdaptator",
         "params": {
             "engine_wrapper": "$engine_wrapper$"
         },
@@ -18,24 +18,6 @@
                 }
             ]
         }
-    },
-    {
-        "name": "SQLRequestConstructor",
-        "params": {
-            "read_distinct": false
-        }
-    },
-    {
-        "name": "SQLFilter",
-        "params": {}
-    },
-    {
-        "name": "SQLPagination",
-        "params": {}
-    },
-    {
-        "name": "SQLRequestExecutor",
-        "params": {}
     },
     {
         "name": "Rename",

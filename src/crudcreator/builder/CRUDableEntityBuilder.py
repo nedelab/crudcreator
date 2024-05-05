@@ -8,11 +8,14 @@ from ..proxy.proxy.not_visible.ProxyEntrypoint import ProxyEntrypoint, ProxyEntr
 from ..source.AbstractCRUDableEntityTypeSource import AbstractCRUDableEntityTypeSource
 from ..source.AbstractSourceParams import AbstractSourceParams
 from ..source.SourceDescriptor import SourceDescriptor
+from ..adaptator.AdaptatorDescriptor import AdaptatorDescriptor
 from ..interface.CRUDableEntityTypeInterface import CRUDableEntityTypeInterface
 import json
 from typing import Type, Any, Optional
 import os
 from ..interface.InterfaceDescriptor import InterfaceDescriptor
+from ..source.SourceIndex import source_index
+from ..adaptator.AdaptatorIndex import adaptator_index
 
 class CRUDableEntityBuilder():
     """
@@ -55,13 +58,22 @@ class CRUDableEntityBuilder():
             for descriptor_dict in json.load(f):#on boucle sur les descriptor
                 chain_start = self.crudable_entity is None#indique si c'est le premier descriptor que l'on rencontre
                 if chain_start and "source" not in descriptor_dict:#on est au début de la chaine, et le descripteur n'indique aucune source : c'est donc lui la source
-                    built_descriptor = (await SourceDescriptor(
-                        **{
-                            **descriptor_dict, 
-                            "subs_index": subs_index,
-                            "addons": addon_source
-                        }
-                    ).build().complete())
+                    if descriptor_dict["name"] in source_index:#pure source
+                        built_descriptor = (await SourceDescriptor(
+                            **{
+                                **descriptor_dict, 
+                                "subs_index": subs_index,
+                                "addons": addon_source
+                            }
+                        ).build().complete())
+                    else:#adaptator
+                        built_descriptor = (await AdaptatorDescriptor(
+                            **{
+                                **descriptor_dict, 
+                                "subs_index": subs_index,
+                                "addons": addon_source
+                            }
+                        ).build())#no complete, adaptator calls complete from source during build
                 elif not chain_start and "source" in descriptor_dict:
                     raise Exception("On ne peut pas renseigner de source en milieu de chaîne")
                 else:

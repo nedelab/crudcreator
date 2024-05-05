@@ -12,11 +12,14 @@ class SourceDescriptor(AbstractDescriptor[AbstractCRUDableEntityTypeSource, Abst
     interface: dict
     addons: dict[str, Type[AbstractCRUDableEntityTypeSource]]
 
-    def get_index(self) -> AbstractCRUDableEntityTypeSource:
+    def get_index(self) -> dict[str, AbstractCRUDableEntityTypeSource]:
         return source_index
     
     def build(self) -> AbstractCRUDableEntityTypeSource:
-        return self.get_class()(
-            params=self.get_params(),
+        """
+        Builds the source associated with the descriptor.
+        """
+        return self.get_class().build(
+            source_params=self.get_params(),
             interface=InterfaceDescriptor(**self._get_params_dict_subst(self.interface)).build()
         )
