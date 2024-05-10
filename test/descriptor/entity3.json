@@ -6,18 +6,7 @@
         },
         "interface": {
             "name": "table3",
-            "can_indicate_read_distinct": true,
-            "fields": [
-                {
-                    "name": "column_to_be_joined"
-                },
-                {
-                    "name": "column_test"
-                },
-                {
-                    "name": "column_text_oui_non_bis"
-                }
-            ]
+            "can_indicate_read_distinct": true
         }
     },
     {

@@ -20,6 +20,8 @@ from ..AbstractSourceParams import AbstractSourceParams
 from ...adaptator.sql.engine_wrapper.SQLEngineWrapper import AbstractSQLEngineWrapper
 from ...adaptator.sql.AbstractSQLEntityType import AbstractSQLEntityType
 from ...interface.CRUDableEntityTypeInterface import CRUDableEntityTypeInterface
+from ...FieldOfCRUDableEntityType import FieldOfCRUDableEntityType
+from ...Fields import Fields
 
 class SQLSourceParams(AbstractSourceParams):
     engine_wrapper: AbstractSQLEngineWrapper
@@ -110,6 +112,16 @@ class SQLSource(AbstractSQLEntityType, AbstractCRUDableEntityTypeSource):
         """
         #TODO : complete link (foreign key). comment savoir si one-to-one ou many-to-many ?
         
+        if self.interface.fields is Sentinel.unknown:
+            list_field = []
+            for column in (await self.get_inspector()).list_column:
+                list_field.append(
+                    FieldOfCRUDableEntityType(
+                        name=column.name
+                    )
+                )
+            self.interface.fields = Fields.build(list_field)
+
         for field in self.interface.fields.list_field:
             column = (await self.get_inspector()).index_column[field.name]
             field_type = TypeConvertor().convert(column.type)#on convertit le type SQL en type Python

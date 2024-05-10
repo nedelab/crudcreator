@@ -1,8 +1,9 @@
 from typing import Any
 from pydantic import BaseModel, create_model
 from ..Filter import FilterInstance, FilterType, FilterationEnum
-from typing import Optional
+from typing import Optional, Union, Literal
 from ..OptionModel import OptionModel
+from ..Sentinel import Sentinel
 
 class CRUDableEntityTypeInterface(BaseModel):
     """
@@ -16,7 +17,7 @@ class CRUDableEntityTypeInterface(BaseModel):
     The name of the entity type (e.g. "book").
     """
 
-    fields: "Fields"
+    fields: Optional[Union["Fields", Literal[Sentinel.unknown]]] = Sentinel.unknown
     """
     The fields that entities of this type will have.
     """
