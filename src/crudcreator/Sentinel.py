@@ -1,3 +1,3 @@
 
 class Sentinel():
-    unknown = "unknown" 
+    unknown: str = "unknown" 

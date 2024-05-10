@@ -1,8 +1,54 @@
 [
     {
-        "name": "SQLSource",
+        "name": "SimpleSQLAdaptator",
         "params": {
-            "engine_wrapper": "$engine_wrapper$"
+            "engine_wrapper": "$engine_wrapper$",
+            "list_linked_field": [
+                {
+                    "field_name": "column_1",
+                    "link": {
+                        "source_name_linked_to": "table_many",
+                        "field_name_linked_to": "column_1",
+                        "type": {
+                            "source": {
+                                "min": "one",
+                                "max": "one"
+                            },
+                            "dest": {
+                                "min": "zero",
+                                "max": "many"
+                            }
+                        }
+                    }
+                },
+                {
+                    "field_name": "column_1",
+                    "link": {
+                        "source_name_linked_to": "table20",
+                        "field_name_linked_to": "column_1",
+                        "type": {
+                            "source": {
+                                "min": "one",
+                                "max": "one"
+                            },
+                            "dest": {
+                                "min": "zero",
+                                "max": "many"
+                            }
+                        }
+                    }
+                }
+            ],
+            "list_activate_entity_only_on_option": [
+                {
+                    "entity_name": "table20",
+                    "option_name": "extend_group_bis"
+                },
+                {
+                    "entity_name": "table_many",
+                    "option_name": "extend_group"
+                }
+            ]
         },
         "interface": {
             "name": "table23",
@@ -18,60 +64,6 @@
         }
     },
     {
-        "name": "SQLRequestConstructor",
-        "params": {
-            "read_distinct": false
-        }
-    },
-    {
-        "name": "SQLCreateLink",
-        "params": {
-            "interface_merge": true,
-            "list_linked_field": [
-                {
-                    "field_name": "column_1",
-                    "link": {
-                        "entity_type_linked_to": "$entity20_sql_before_read_link$",
-                        "field_name_linked_to": "column_1",
-                        "type": {
-                            "source": {
-                                "min": "one",
-                                "max": "one"
-                            },
-                            "dest": {
-                                "min": "zero",
-                                "max": "many"
-                            }
-                        }
-                    }
-                }
-            ]
-        }
-    },
-    {
-        "name": "SQLReadFromLink",
-        "params": {
-            "list_activate_entity_only_on_option": [
-                {
-                    "entity_name": "table20",
-                    "option_name": "extend_group_bis"
-                },
-                {
-                    "entity_name": "table_many",
-                    "option_name": "extend_group"
-                }
-            ]
-        }
-    },
-    {
-        "name": "SQLFilter",
-        "params": {}
-    },
-    {
-        "name": "SQLRequestExecutor",
-        "params": {}
-    },
-    {
         "name": "Rename",
         "params": {
             "interface_name": "entity23",
@@ -84,10 +76,10 @@
             "list_readable_field_name": [
                 "column_1", 
                 "column_2_bis",
-                "column_2",
+                "table20.column_2",
                 "table20.column_1",
                 "table_many.column_1",
-                "table_many.column_2"
+                "column_2"
             ]
         }
     },
@@ -95,7 +87,7 @@
         "name": "GroupBy",
         "params": {
             "group_name": "group",
-            "grouped_by_fields": ["column_1", "column_2_bis", "table20.column_1", "column_2"],
+            "grouped_by_fields": ["column_1", "column_2_bis", "table20.column_1", "table20.column_2"],
             "one_elem_with_all_none_means_empty": true,
             "see_group_only_on_option": "extend_group"
         }
@@ -107,7 +99,7 @@
                 "column_1", 
                 "column_2_bis",
                 "table20.column_1",
-                "column_2",
+                "table20.column_2",
                 "group"
             ]
         }
@@ -163,30 +155,6 @@
             "allowed_filter_on_fields": [
                 {
                     "field_name": "column_1",
-                    "allowed_filter_type": {
-                        "filtration_type": "equal", 
-                        "is_mandatory": false,
-                        "default": null
-                    }
-                },
-                {
-                    "field_name": "column_2",
-                    "allowed_filter_type": {
-                        "filtration_type": "equal", 
-                        "is_mandatory": false,
-                        "default": null
-                    }
-                },
-                {
-                    "field_name": "table_many.column_1",
-                    "allowed_filter_type": {
-                        "filtration_type": "equal", 
-                        "is_mandatory": false,
-                        "default": null
-                    }
-                },
-                {
-                    "field_name": "table_many.column_2",
                     "allowed_filter_type": {
                         "filtration_type": "equal", 
                         "is_mandatory": false,

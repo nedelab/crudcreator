@@ -1,8 +1,14 @@
 
-from ....proxy.proxy.link.CreateLink import CreateLink
-from .AbstractSQLRequestProxy import AbstractSQLRequestProxy
+from ....proxy.proxy.link.CreateLink import CreateLink, CreateLinkParams
+from .AbstractSQLRequestProxy import AbstractSQLRequestProxy, AbstractSQLRequestProxyParams
 from ..SQLColumnInspector import SQLColumnInspector
 from typing import Optional
+
+class SQLCreateLinkParams(AbstractSQLRequestProxyParams, CreateLinkParams):
+    """
+    SQLCreateLink proxy parameters.
+    """
+    pass
 
 class SQLCreateLink(CreateLink, AbstractSQLRequestProxy):
     """
@@ -18,7 +24,6 @@ class SQLCreateLink(CreateLink, AbstractSQLRequestProxy):
         {
             "name": "SQLCreateLink",
             "params": {
-                "interface_merge": true,
                 "list_linked_field": [
                     {
                         "field_name": "column_to_join",
@@ -40,6 +45,11 @@ class SQLCreateLink(CreateLink, AbstractSQLRequestProxy):
                 ]
             }
         }
+    """
+
+    params: SQLCreateLinkParams
+    """
+    SQLCreateLink proxy parameters.
     """
 
     sql_inspector: Optional[SQLColumnInspector] = None

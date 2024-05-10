@@ -36,6 +36,37 @@ class LinkedField(BaseModel):
     The link.
     """
 
+class LinkToSource(BaseModel):
+    """
+    Represents a link to an entity type.
+    """
+
+    source_name_linked_to: str
+    """
+    The source to which the link is pointing.
+    """
+
+    field_name_linked_to: str
+    """
+    The field of the destination entity through which the link is made.
+    """
+
+    type: Optional[LinkType] = None
+    """
+    Link cardinality.
+    """
+
+class LinkedFieldToSource(BaseModel):
+    field_name: str
+    """
+    The name of the current entity type's field to which the link is made.
+    """
+
+    link: LinkToSource
+    """
+    The link.
+    """
+
 from .AbstractCRUDableEntityType import AbstractCRUDableEntityType
 from .FieldOfCRUDableEntityType import FieldOfCRUDableEntityType
 from .Fields import Fields

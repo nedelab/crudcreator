@@ -1,37 +1,13 @@
 [
     {
-        "name": "SQLSource",
+        "name": "SimpleSQLAdaptator",
         "params": {
-            "engine_wrapper": "$engine_wrapper$"
-        },
-        "interface": {
-            "name": "table18",
-            "can_indicate_read_distinct": true,
-            "fields": [
-                {
-                    "name": "column_id"
-                },
-                {
-                    "name": "column_to_join"
-                }
-            ]
-        }
-    },
-    {
-        "name": "SQLRequestConstructor",
-        "params": {
-            "read_distinct": false
-        }
-    },
-    {
-        "name": "SQLCreateLink",
-        "params": {
-            "interface_merge": true,
+            "engine_wrapper": "$engine_wrapper$",
             "list_linked_field": [
                 {
                     "field_name": "column_to_join",
                     "link": {
-                        "entity_type_linked_to": "$entity3_sql$",
+                        "source_name_linked_to": "table3",
                         "field_name_linked_to": "column_to_be_joined",
                         "type": {
                             "source": {
@@ -46,19 +22,19 @@
                     }
                 }
             ]
+        },
+        "interface": {
+            "name": "table18",
+            "can_indicate_read_distinct": true,
+            "fields": [
+                {
+                    "name": "column_id"
+                },
+                {
+                    "name": "column_to_join"
+                }
+            ]
         }
-    },
-    {
-        "name": "SQLReadFromLink",
-        "params": {}
-    },
-    {
-        "name": "SQLFilter",
-        "params": {}
-    },
-    {
-        "name": "SQLRequestExecutor",
-        "params": {}
     },
     {
         "name": "Rename",
@@ -94,7 +70,6 @@
     {
         "name": "CreateLink",
         "params": {
-            "interface_merge": true,
             "list_linked_field": [
                 {
                     "field_name": "field_to_join",

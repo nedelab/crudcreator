@@ -1,24 +1,6 @@
 [
     {
         "source": "entity7_source",
-        "name": "SQLRequestConstructor",
-        "params": {
-            "read_distinct": false
-        }
-    },
-    {
-        "name": "SQLSort",
-        "params": {}
-    },
-    {
-        "name": "SQLFilter",
-        "params": {}
-    },
-    {
-        "name": "SQLRequestExecutor",
-        "params": {}
-    },
-    {
         "name": "Rename",
         "params": {
             "interface_name": "entity7_bis",

@@ -1,37 +1,19 @@
 [
     {
-        "name": "SQLSource",
+        "name": "SimpleSQLAdaptator",
         "params": {
-            "engine_wrapper": "$engine_wrapper$"
-        },
-        "interface": {
-            "name": "table20",
-            "can_indicate_read_distinct": true,
-            "fields": [
+            "engine_wrapper": "$engine_wrapper$",
+            "list_activate_entity_only_on_option": [
                 {
-                    "name": "column_1"
-                },
-                {
-                    "name": "column_2"
+                    "entity_name": "table_many",
+                    "option_name": "extend_group"
                 }
-            ]
-        }
-    },
-    {
-        "name": "SQLRequestConstructor",
-        "params": {
-            "read_distinct": false
-        }
-    },
-    {
-        "name": "SQLCreateLink",
-        "params": {
-            "interface_merge": true,
+            ],
             "list_linked_field": [
                 {
                     "field_name": "column_1",
                     "link": {
-                        "entity_type_linked_to": "$entitymany_sql$",
+                        "source_name_linked_to": "table_many",
                         "field_name_linked_to": "column_1",
                         "type": {
                             "source": {
@@ -47,27 +29,18 @@
                 }
             ]
         },
-        "ref": "entity20_sql_before_read_link"
-    },
-    {
-        "name": "SQLReadFromLink",
-        "params": {
-            "list_activate_entity_only_on_option": [
+        "interface": {
+            "name": "table20",
+            "can_indicate_read_distinct": true,
+            "fields": [
                 {
-                    "entity_name": "table_many",
-                    "option_name": "extend_group"
+                    "name": "column_1"
+                },
+                {
+                    "name": "column_2"
                 }
             ]
         }
-    },
-    {
-        "name": "SQLFilter",
-        "params": {},
-        "ref": "entity20_sql"
-    },
-    {
-        "name": "SQLRequestExecutor",
-        "params": {}
     },
     {
         "name": "Rename",
@@ -79,7 +52,6 @@
     {
         "name": "CreateLink",
         "params": {
-            "interface_merge": true,
             "list_linked_field": [
                 {
                     "field_name": "column_1",

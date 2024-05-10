@@ -1,37 +1,19 @@
 [
     {
-        "name": "SQLSource",
+        "name": "SimpleSQLAdaptator",
         "params": {
-            "engine_wrapper": "$engine_wrapper$"
-        },
-        "interface": {
-            "name": "table22",
-            "can_indicate_read_distinct": true,
-            "fields": [
+            "engine_wrapper": "$engine_wrapper$",
+            "list_activate_entity_only_on_option": [
                 {
-                    "name": "column_id"
-                },
-                {
-                    "name": "user_id"
+                    "entity_name": "table_user",
+                    "option_name": "extend_user"
                 }
-            ]
-        }
-    },
-    {
-        "name": "SQLRequestConstructor",
-        "params": {
-            "read_distinct": true
-        }
-    },
-    {
-        "name": "SQLCreateLink",
-        "params": {
-            "interface_merge": true,
+            ],
             "list_linked_field": [
                 {
                     "field_name": "user_id",
                     "link": {
-                        "entity_type_linked_to": "$user_sql$",
+                        "source_name_linked_to": "table_user",
                         "field_name_linked_to": "user_id",
                         "type": {
                             "source": {
@@ -46,26 +28,19 @@
                     }
                 }
             ]
-        }
-    },
-    {
-        "name": "SQLReadFromLink",
-        "params": {
-            "list_activate_entity_only_on_option": [
+        },
+        "interface": {
+            "name": "table22",
+            "can_indicate_read_distinct": true,
+            "fields": [
                 {
-                    "entity_name": "table_user",
-                    "option_name": "extend_user"
+                    "name": "column_id"
+                },
+                {
+                    "name": "user_id"
                 }
             ]
         }
-    },
-    {
-        "name": "SQLFilter",
-        "params": {}
-    },
-    {
-        "name": "SQLRequestExecutor",
-        "params": {}
     },
     {
         "name": "Rename",

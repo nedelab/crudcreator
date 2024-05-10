@@ -1,37 +1,13 @@
 [
     {
-        "name": "SQLSource",
+        "name": "SimpleSQLAdaptator",
         "params": {
-            "engine_wrapper": "$engine_wrapper$"
-        },
-        "interface": {
-            "name": "table15",
-            "can_indicate_read_distinct": true,
-            "fields": [
-                {
-                    "name": "column_id"
-                },
-                {
-                    "name": "user_id"
-                }
-            ]
-        }
-    },
-    {
-        "name": "SQLRequestConstructor",
-        "params": {
-            "read_distinct": true
-        }
-    },
-    {
-        "name": "SQLCreateLink",
-        "params": {
-            "interface_merge": true,
+            "engine_wrapper": "$engine_wrapper$",
             "list_linked_field": [
                 {
                     "field_name": "user_id",
                     "link": {
-                        "entity_type_linked_to": "$user_sql$",
+                        "source_name_linked_to": "table_user",
                         "field_name_linked_to": "user_id",
                         "type": {
                             "source": {
@@ -46,19 +22,19 @@
                     }
                 }
             ]
+        },
+        "interface": {
+            "name": "table15",
+            "can_indicate_read_distinct": true,
+            "fields": [
+                {
+                    "name": "column_id"
+                },
+                {
+                    "name": "user_id"
+                }
+            ]
         }
-    },
-    {
-        "name": "SQLReadFromLink",
-        "params": {}
-    },
-    {
-        "name": "SQLFilter",
-        "params": {}
-    },
-    {
-        "name": "SQLRequestExecutor",
-        "params": {}
     },
     {
         "name": "Rename",

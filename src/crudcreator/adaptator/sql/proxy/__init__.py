@@ -3,7 +3,7 @@ from .SQLReadFromLink import SQLReadFromLink, SQLReadFromLinkParams
 from .SQLRequestConstructor import SQLRequestConstructor, SQLRequestConstructorParams
 from .SQLRequestExecutor import SQLRequestExecutor, SQLRequestExecutorParams
 from .SQLSort import SQLSort, SQLSortParams
-from .SQLCreateLink import SQLCreateLink
+from .SQLCreateLink import SQLCreateLink, SQLCreateLinkParams
 from .SQLPagination import SQLPagination, SQLPaginationParams
 
 __all__ = [
@@ -12,6 +12,6 @@ __all__ = [
     SQLRequestConstructor, SQLRequestConstructorParams,
     SQLRequestExecutor, SQLRequestExecutorParams,
     SQLSort, SQLSortParams,
-    SQLCreateLink,
+    SQLCreateLink, SQLCreateLinkParams,
     SQLPagination, SQLPaginationParams
 ]

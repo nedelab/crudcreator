@@ -1,6 +1,6 @@
 [
     {
-        "name": "SQLSource",
+        "name": "SimpleSQLAdaptator",
         "params": {
             "engine_wrapper": "$engine_wrapper$"
         },
@@ -16,21 +16,6 @@
                 }
             ]
         }
-    },
-    {
-        "name": "SQLRequestConstructor",
-        "params": {
-            "read_distinct": false
-        }
-    },
-    {
-        "name": "SQLFilter",
-        "params": {},
-        "ref": "entitymany_sql"
-    },
-    {
-        "name": "SQLRequestExecutor",
-        "params": {}
     },
     {
         "name": "Rename",

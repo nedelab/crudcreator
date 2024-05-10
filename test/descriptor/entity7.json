@@ -1,6 +1,6 @@
 [
     {
-        "name": "SQLSource",
+        "name": "SimpleSQLAdaptator",
         "params": {
             "engine_wrapper": "$engine_wrapper$"
         },
@@ -20,24 +20,6 @@
             ]
         },
         "ref": "entity7_source"
-    },
-    {
-        "name": "SQLRequestConstructor",
-        "params": {
-            "read_distinct": false
-        }
-    },
-    {
-        "name": "SQLSort",
-        "params": {}
-    },
-    {
-        "name": "SQLFilter",
-        "params": {}
-    },
-    {
-        "name": "SQLRequestExecutor",
-        "params": {}
     },
     {
         "name": "Rename",

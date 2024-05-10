@@ -21,15 +21,9 @@ class CreateLinkParams(AbstractProxyParams):
     CreateLink proxy settings.
     """
 
-    list_linked_field : list[LinkedField]
+    list_linked_field: list[LinkedField]
     """
     List of links.
-    """
-
-    interface_merge: bool
-    """
-    Does nothing.
-    TODO ?
     """
     
     @functools.cached_property
@@ -57,7 +51,6 @@ class CreateLink(AbstractCRUDableEntityTypeProxy):
         {
             "name": "CreateLink",
             "params": {
-                "interface_merge": true,
                 "list_linked_field": [
                     {
                         "field_name": "field_to_join",

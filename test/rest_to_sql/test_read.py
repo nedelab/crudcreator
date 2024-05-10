@@ -766,54 +766,54 @@ async def test_read_entity_23():
         assert type(row["group_bis"]) == list
         for g_bis in row["group_bis"]:
             assert "table20.column_1" in g_bis
-            assert "column_2" in g_bis
+            assert "table20.column_2" in g_bis
             assert "group" in g_bis
             for g in g_bis["group"]:
                 assert "table_many.column_1" in g
-                assert "table_many.column_2" in g
+                assert "column_2" in g
 
     data[0]["column_1"] == "1"
     data[0]["column_2_bis"] == "1"
     assert len(data[0]["group_bis"]) == 1
     assert data[0]["group_bis"][0]["table20.column_1"] == "1"
-    assert data[0]["group_bis"][0]["column_2"] == "1"
+    assert data[0]["group_bis"][0]["table20.column_2"] == "1"
     assert len(data[0]["group_bis"][0]["group"]) == 1
     assert data[0]["group_bis"][0]["group"][0]["table_many.column_1"] == "1"
-    assert data[0]["group_bis"][0]["group"][0]["table_many.column_2"] == "10"
+    assert data[0]["group_bis"][0]["group"][0]["column_2"] == "10"
 
     data[1]["column_1"] == "2"
     data[1]["column_2_bis"] == "2"
     assert len(data[1]["group_bis"]) == 1
     assert data[1]["group_bis"][0]["table20.column_1"] == "2"
-    assert data[1]["group_bis"][0]["column_2"] == "2"
+    assert data[1]["group_bis"][0]["table20.column_2"] == "2"
     assert len(data[1]["group_bis"][0]["group"]) == 3
     assert data[1]["group_bis"][0]["group"][0]["table_many.column_1"] == "2"
-    assert data[1]["group_bis"][0]["group"][0]["table_many.column_2"] == "20"
+    assert data[1]["group_bis"][0]["group"][0]["column_2"] == "20"
     assert data[1]["group_bis"][0]["group"][1]["table_many.column_1"] == "2"
-    assert data[1]["group_bis"][0]["group"][1]["table_many.column_2"] == "20"
+    assert data[1]["group_bis"][0]["group"][1]["column_2"] == "20"
     assert data[1]["group_bis"][0]["group"][2]["table_many.column_1"] == "2"
-    assert data[1]["group_bis"][0]["group"][2]["table_many.column_2"] == "20"
+    assert data[1]["group_bis"][0]["group"][2]["column_2"] == "20"
 
     data[2]["column_1"] == "3"
     data[2]["column_2_bis"] == "3"
     assert len(data[2]["group_bis"]) == 2
     assert data[2]["group_bis"][0]["table20.column_1"] == "3"
-    assert data[2]["group_bis"][0]["column_2"] == "3"
+    assert data[2]["group_bis"][0]["table20.column_2"] == "3"
     assert len(data[2]["group_bis"][0]["group"]) == 1
     assert data[2]["group_bis"][0]["group"][0]["table_many.column_1"] == "3"
-    assert data[2]["group_bis"][0]["group"][0]["table_many.column_2"] == "30"
+    assert data[2]["group_bis"][0]["group"][0]["column_2"] == "30"
 
     assert data[2]["group_bis"][1]["table20.column_1"] == "3"
-    assert data[2]["group_bis"][1]["column_2"] == "3_bis"
+    assert data[2]["group_bis"][1]["table20.column_2"] == "3_bis"
     assert len(data[2]["group_bis"][1]["group"]) == 1
     assert data[2]["group_bis"][1]["group"][0]["table_many.column_1"] == "3"
-    assert data[2]["group_bis"][1]["group"][0]["table_many.column_2"] == "30"
+    assert data[2]["group_bis"][1]["group"][0]["column_2"] == "30"
 
     data[3]["column_1"] == "4"
     data[3]["column_2_bis"] == "4"
     assert len(data[3]["group_bis"]) == 1
     assert data[3]["group_bis"][0]["table20.column_1"] == "4"
-    assert data[3]["group_bis"][0]["column_2"] == "4"
+    assert data[3]["group_bis"][0]["table20.column_2"] == "4"
     assert len(data[3]["group_bis"][0]["group"]) == 0
 
 @pytest.mark.asyncio
@@ -845,7 +845,7 @@ async def test_read_entity_23_2():
         assert type(row["group_bis"]) == list
         for g_bis in row["group_bis"]:
             assert "table20.column_1" in g_bis
-            assert "column_2" in g_bis
+            assert "table20.column_2" in g_bis
             assert "group" in g_bis
             assert g_bis["group"] is None
 
@@ -853,28 +853,28 @@ async def test_read_entity_23_2():
     data[0]["column_2_bis"] == "1"
     assert len(data[0]["group_bis"]) == 1
     assert data[0]["group_bis"][0]["table20.column_1"] == "1"
-    assert data[0]["group_bis"][0]["column_2"] == "1"
+    assert data[0]["group_bis"][0]["table20.column_2"] == "1"
 
     data[1]["column_1"] == "2"
     data[1]["column_2_bis"] == "2"
     assert len(data[1]["group_bis"]) == 1
     assert data[1]["group_bis"][0]["table20.column_1"] == "2"
-    assert data[1]["group_bis"][0]["column_2"] == "2"
+    assert data[1]["group_bis"][0]["table20.column_2"] == "2"
 
     data[2]["column_1"] == "3"
     data[2]["column_2_bis"] == "3"
     assert len(data[2]["group_bis"]) == 2
     assert data[2]["group_bis"][0]["table20.column_1"] == "3"
-    assert data[2]["group_bis"][0]["column_2"] == "3_bis"
+    assert data[2]["group_bis"][0]["table20.column_2"] == "3_bis"
     assert data[2]["group_bis"][1]["table20.column_1"] == "3"
-    assert data[2]["group_bis"][1]["column_2"] == "3"
+    assert data[2]["group_bis"][1]["table20.column_2"] == "3"
 
 
     data[3]["column_1"] == "4"
     data[3]["column_2_bis"] == "4"
     assert len(data[3]["group_bis"]) == 1
     assert data[3]["group_bis"][0]["table20.column_1"] == "4"
-    assert data[3]["group_bis"][0]["column_2"] == "4"
+    assert data[3]["group_bis"][0]["table20.column_2"] == "4"
 
 @pytest.mark.asyncio
 async def test_read_limit():

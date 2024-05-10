@@ -1,8 +1,27 @@
 [
     {
-        "name": "SQLSource",
+        "name": "SimpleSQLAdaptator",
         "params": {
-            "engine_wrapper": "$engine_wrapper$"
+            "engine_wrapper": "$engine_wrapper$",
+            "list_linked_field": [
+                {
+                    "field_name": "column_to_join",
+                    "link": {
+                        "source_name_linked_to": "table3",
+                        "field_name_linked_to": "column_to_be_joined",
+                        "type": {
+                            "source": {
+                                "min": "one",
+                                "max": "one"
+                            },
+                            "dest": {
+                                "min": "one",
+                                "max": "one"
+                            }
+                        }
+                    }
+                }
+            ]
         },
         "interface": {
             "name": "$table1_var$",
@@ -49,49 +68,6 @@
                 }
             ]
         }
-    },
-    {
-        "name": "SQLRequestConstructor",
-        "params": {
-            "read_distinct": false
-        }
-    },
-    {
-        "name": "SQLCreateLink",
-        "params": {
-            "interface_merge": true,
-            "list_linked_field": [
-                {
-                    "field_name": "column_to_join",
-                    "link": {
-                        "entity_type_linked_to": "$entity3_sql$",
-                        "field_name_linked_to": "column_to_be_joined",
-                        "type": {
-                            "source": {
-                                "min": "one",
-                                "max": "one"
-                            },
-                            "dest": {
-                                "min": "one",
-                                "max": "one"
-                            }
-                        }
-                    }
-                }
-            ]
-        }
-    },
-    {
-        "name": "SQLReadFromLink",
-        "params": {}
-    },
-    {
-        "name": "SQLFilter",
-        "params": {}
-    },
-    {
-        "name": "SQLRequestExecutor",
-        "params": {}
     },
     {
         "name": "Rename",
@@ -243,7 +219,6 @@
     {
         "name": "CreateLink",
         "params": {
-            "interface_merge": true,
             "list_linked_field": [
                 {
                     "field_name": "field_to_join",

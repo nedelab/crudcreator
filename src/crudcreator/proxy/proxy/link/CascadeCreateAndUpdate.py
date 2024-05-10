@@ -47,7 +47,6 @@ class CascadeCreateAndUpdate(AbstractCRUDableEntityTypeProxy):
         {
             "name": "CreateLink",
             "params": {
-                "interface_merge": true,
                 "list_linked_field": [
                     {
                         "field_name": "field_to_join",
