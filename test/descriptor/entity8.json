@@ -9,14 +9,10 @@
             "can_indicate_read_distinct": true,
             "fields": [
                 {
-                    "name": "column_id",
-                    "can_be_created": false,
-                    "can_be_updated": false
+                    "name": "column_id"
                 },
                 {
-                    "name": "column_2",
-                    "can_be_created": true,
-                    "can_be_updated": true
+                    "name": "column_2"
                 }
             ]
         }
@@ -34,6 +30,31 @@
                     "source": "column_id",
                     "destination": "field_id"
                 }
+            ]
+        }
+    },
+    {
+        "name": "ReadFirewall",
+        "params": {
+            "list_readable_field_name": [
+                "column_id",
+                "column_2"
+            ]
+        }
+    },
+    {
+        "name": "CreateFirewall",
+        "params": {
+            "list_creatable_field_name": [
+                "column_2"
+            ]
+        }
+    },
+    {
+        "name": "UpdateFirewall",
+        "params": {
+            "list_updatable_field_name": [
+                "column_2"
             ]
         }
     },

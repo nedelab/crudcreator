@@ -36,7 +36,7 @@ class FieldOfCRUDableEntityType(BaseModel):
     TODO : careful, update_or_create for fields with can_be_create!=can_be_updated
     """
 
-    can_be_read: Optional[bool] = True
+    can_be_read: Optional[bool] = False
     """
     Can this field be read?
     """

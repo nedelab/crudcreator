@@ -212,7 +212,7 @@ async def test_update_entity_20_one_field():
     assert len(read_reponse) == 0
     create_response = _update(
         "/entity20", {
-                "column_2": "1"
+                "column_2": "1"#is ignored. TODO : must raise error ?
             }, {
                 "column_1": "5"
             }
@@ -227,6 +227,34 @@ async def test_update_entity_20_one_field():
     assert len(read_reponse) == 1
     entity = read_reponse[0]
     assert entity["column_2"] == "1"
+
+@pytest.mark.asyncio
+async def test_update_entity_20_not_in_id_firewall():
+    await reinit_db()
+    read_reponse = _read("/entity20", {
+        "column_1": "1"
+    })
+    assert len(read_reponse) == 1
+    read_reponse = _read("/entity20", {
+        "column_1": "5"
+    })
+    assert len(read_reponse) == 0
+    create_response = _update(
+        "/entity20", {
+                "column_1": "1"
+            }, {
+                "column_2": "5"
+            }
+    )
+    read_reponse = _read("/entity20", {
+        "column_2": "1"
+    })
+    assert len(read_reponse) == 0
+    read_reponse = _read("/entity20", {
+        "column_2": "5"
+    })
+    assert len(read_reponse) == 4
+    assert not all([entity["column_1"] == "1" for entity in read_reponse])
 
 @pytest.mark.asyncio
 async def test_update_entity_24():

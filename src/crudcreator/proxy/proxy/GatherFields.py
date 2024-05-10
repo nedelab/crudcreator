@@ -93,34 +93,38 @@ class GatherFields(AbstractCRUDableEntityTypeProxy):
             {
                 "other_field": "a",
                 "other_field_2": "b",
-                "my_group": [
-                    {
+                "my_group": {
                         "field_foo": "1",
                         "field_bar": "1"
                     }
-                ]
             },
             {
                 "other_field": "c",
                 "other_field_2": "d",
-                "my_group": [
-                    {
+                "my_group": {
                         "field_foo": "1",
                         "field_bar": "1"
                     }
-                ]
             },
             {
                 "other_field": "a",
                 "other_field_2": "b"
-                "my_group": [
-                    {
+                "my_group": {
                         "field_foo": "1",
                         "field_bar": "2"
                     }
-                ]
             }
         ]
+
+    .. note::
+
+        A ReadFirewall must be placed before the GatherFields proxy, 
+        so that it can at least determine the fields to be grouped.
+
+    .. note::
+
+        A ReadFirewall must be placed after the GatherFields proxy, 
+        to whitelist at least the group field.
     """
     
     params: GatherFieldsParams

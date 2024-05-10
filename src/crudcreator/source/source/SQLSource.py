@@ -48,21 +48,15 @@ class SQLSource(AbstractSQLEntityType, AbstractCRUDableEntityTypeSource):
                 "fields": [
                     {
                         "name": "book_id",
-                        "is_id_field": true,
-                        "can_be_created": true,
-                        "can_be_updated": false
+                        "is_id_field": true
                     },
                     {
                         "name": "title",
-                        "is_id_field": false,
-                        "can_be_created": true,
-                        "can_be_updated": true
+                        "is_id_field": false
                     },
                     {
                         "name": "public_domain",
-                        "is_id_field": false,
-                        "can_be_created": true,
-                        "can_be_updated": false
+                        "is_id_field": false
                     }
                 ]
             }

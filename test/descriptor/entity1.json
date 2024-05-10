@@ -27,8 +27,7 @@
                     "name": "column_text_no_default"
                 },
                 {
-                    "name": "column_text_overwritten_default",
-                    "default": "overwritten_default"
+                    "name": "column_text_overwritten_default"
                 },
                 {
                     "name": "column_text_not_writable"
@@ -212,6 +211,17 @@
                 "field_text_overwritten_default",
                 "field_text_updatable_not_creatable",
                 "field_bool_converted"
+            ]
+        }
+    },
+    {
+        "name": "AddDefault",
+        "params": {
+            "default_on_fields": [
+                {
+                    "field_name": "field_text_overwritten_default",
+                    "default": "overwritten_default"
+                }
             ]
         }
     },

@@ -61,10 +61,10 @@ class SQLRequestConstructor(AbstractSQLRequestProxy):
         req: Select = select(*[
             (await self.get_inspector()).index_sqlalchemy_column[field_name].label(field_name)
             for field_name in params.list_read_field
-            if field_name in (await self.get_inspector()).index_sqlalchemy_column
-            and field_name in self.interface.fields.index_field_by_name
+            if field_name in (await self.get_inspector()).index_sqlalchemy_column#TODO : necessary?
+            and field_name in self.interface.fields.index_field_by_name#TODO : necessary?
         ])  
-        if params.must_read_distinct:
+        if params.must_read_distinct:#TODO : do it in another proxy?
             req = req.distinct()
         return req
     

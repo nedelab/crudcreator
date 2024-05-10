@@ -12,13 +12,10 @@
                     "name": "column_to_be_joined"
                 },
                 {
-                    "name": "column_test",
-                    "is_id_field": true
+                    "name": "column_test"
                 },
                 {
-                    "name": "column_text_oui_non_bis",
-                    "can_be_created": true,
-                    "can_be_updated": true
+                    "name": "column_text_oui_non_bis"
                 }
             ]
         }
@@ -67,6 +64,42 @@
                     "special_type": "$oui_non_type$"
                 }
             ]
+        },
+        "ref": "entity3"
+    },
+    {
+        "name": "ReadFirewall",
+        "params": {
+            "list_readable_field_name": [
+                "field_test",
+                "field_bool_converted_bis",
+                "field_to_be_joined"
+            ]
+        }
+    },
+    {
+        "name": "CreateFirewall",
+        "params": {
+            "list_creatable_field_name": [
+                "field_bool_converted_bis",
+                "field_to_be_joined"
+            ]
+        }
+    },
+    {
+        "name": "UpdateFirewall",
+        "params": {
+            "list_updatable_field_name": [
+                "field_bool_converted_bis"
+            ]
+        }
+    },
+    {
+        "name": "IdFirewall",
+        "params": {
+            "list_id_field_name": [
+                "field_test"
+            ]
         }
     },
     {
@@ -90,7 +123,6 @@
                     }
                 }
             ]
-        },
-        "ref": "entity3"
+        }
     }
 ]

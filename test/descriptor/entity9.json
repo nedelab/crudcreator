@@ -9,22 +9,13 @@
             "can_indicate_read_distinct": true,
             "fields": [
                 {
-                    "name": "column_pk_becomes_not_pk",
-                    "can_be_created": true,
-                    "can_be_updated": true,
-                    "is_id_field": false
+                    "name": "column_pk_becomes_not_pk"
                 },
                 {
-                    "name": "column_not_pk_becomes_pk",
-                    "can_be_created": true,
-                    "can_be_updated": true,
-                    "is_id_field": true
+                    "name": "column_not_pk_becomes_pk"
                 },
                 {
-                    "name": "column_not_pk_becomes_pk_default",
-                    "can_be_created": true,
-                    "can_be_updated": true,
-                    "is_id_field": true
+                    "name": "column_not_pk_becomes_pk_default"
                 }
             ]
         }
@@ -46,6 +37,45 @@
                     "source": "column_not_pk_becomes_pk_default",
                     "destination": "field_not_pk_becomes_pk_default"
                 }
+            ]
+        }
+    },
+    {
+        "name": "ReadFirewall",
+        "params": {
+            "list_readable_field_name": [
+                "field_pk_becomes_not_pk",
+                "field_not_pk_becomes_pk",
+                "field_not_pk_becomes_pk_default"
+            ]
+        }
+    },
+    {
+        "name": "CreateFirewall",
+        "params": {
+            "list_creatable_field_name": [
+                "field_pk_becomes_not_pk",
+                "field_not_pk_becomes_pk",
+                "field_not_pk_becomes_pk_default"
+            ]
+        }
+    },
+    {
+        "name": "UpdateFirewall",
+        "params": {
+            "list_updatable_field_name": [
+                "field_pk_becomes_not_pk",
+                "field_not_pk_becomes_pk",
+                "field_not_pk_becomes_pk_default"
+            ]
+        }
+    },
+    {
+        "name": "IdFirewall",
+        "params": {
+            "list_id_field_name": [
+                "field_not_pk_becomes_pk",
+                "field_not_pk_becomes_pk_default"
             ]
         }
     },

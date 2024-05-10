@@ -458,6 +458,29 @@ ReadDistinctFirewall
 |
 |
 
+IdFirewall
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. module:: crudcreator.proxy.proxy.firewall.IdFirewallFirewall
+    :noindex:
+
+.. autopydantic_model::  IdFirewallFirewall
+    :members:
+    :model-show-json: false
+    :model-show-field-summary: false
+
+|
+|
+
+.. autopydantic_model::  IdFirewallParams
+    :members:
+    :model-show-json: false
+    :model-show-field-summary: false
+
+
+|
+|
+
 Links
 --------------------
 

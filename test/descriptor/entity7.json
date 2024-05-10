@@ -9,20 +9,13 @@
             "can_indicate_read_distinct": true,
             "fields": [
                 {
-                    "name": "column_id",
-                    "is_id_field": true,
-                    "can_be_created": true,
-                    "can_be_updated": true
+                    "name": "column_id"
                 },
                 {
-                    "name": "sort1",
-                    "can_be_created": true,
-                    "can_be_updated": true
+                    "name": "sort1"
                 },
                 {
-                    "name": "sort2",
-                    "can_be_created": true,
-                    "can_be_updated": true
+                    "name": "sort2"
                 }
             ]
         },
@@ -51,6 +44,44 @@
         "params": {
             "interface_name": "entity7",
             "translation_list": []
+        }
+    },
+    {
+        "name": "ReadFirewall",
+        "params": {
+            "list_readable_field_name": [
+                "column_id",
+                "sort1",
+                "sort2"
+            ]
+        }
+    },
+    {
+        "name": "CreateFirewall",
+        "params": {
+            "list_creatable_field_name": [
+                "column_id",
+                "sort1",
+                "sort2"
+            ]
+        }
+    },
+    {
+        "name": "UpdateFirewall",
+        "params": {
+            "list_updatable_field_name": [
+                "column_id",
+                "sort1",
+                "sort2"
+            ]
+        }
+    },
+    {
+        "name": "IdFirewall",
+        "params": {
+            "list_id_field_name": [
+                "field_id"
+            ]
         }
     },
     {

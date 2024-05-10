@@ -124,6 +124,15 @@ class GroupBy(AbstractCRUDableEntityTypeProxy):
             }
         ]
 
+    .. note::
+
+        A ReadFirewall must be placed before the GroupBy proxy, 
+        so that it can at least determine the fields to be grouped.
+
+    .. note::
+
+        A ReadFirewall must be placed after the GroupBy proxy, 
+        to whitelist at least the group field.
     """
 
     params: GroupByParams

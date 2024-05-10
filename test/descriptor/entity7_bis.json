@@ -26,6 +26,16 @@
         }
     },
     {
+        "name": "ReadFirewall",
+        "params": {
+            "list_readable_field_name": [
+                "column_id",
+                "sort1",
+                "sort2"
+            ]
+        }
+    },
+    {
         "name": "AddSort",
         "params": {
             "list_field_on_which_to_sort": [

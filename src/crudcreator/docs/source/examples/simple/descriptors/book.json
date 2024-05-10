@@ -9,23 +9,50 @@
             "can_indicate_read_distinct": true,
             "fields": [
                 {
-                    "name": "book_id",
-                    "is_id_field": true,
-                    "can_be_created": true,
-                    "can_be_updated": false
+                    "name": "book_id"
                 },
                 {
-                    "name": "title",
-                    "is_id_field": false,
-                    "can_be_created": true,
-                    "can_be_updated": true
+                    "name": "title"
                 },
                 {
-                    "name": "public_domain",
-                    "is_id_field": false,
-                    "can_be_created": true,
-                    "can_be_updated": false
+                    "name": "public_domain"
                 }
+            ]
+        }
+    },
+    {
+        "name": "ReadFirewall",
+        "params": {
+            "list_readable_field_name": [
+                "book_id",
+                "title",
+                "public_domain"
+            ]
+        }
+    },
+    {
+        "name": "CreateFirewall",
+        "params": {
+            "list_creatable_field_name": [
+                "book_id",
+                "title",
+                "public_domain"
+            ]
+        }
+    },
+    {
+        "name": "UpdateFirewall",
+        "params": {
+            "list_updatable_field_name": [
+                "title"
+            ]
+        }
+    },
+    {
+        "name": "IdFirewall",
+        "params": {
+            "list_id_field_name": [
+                "book_id"
             ]
         }
     },

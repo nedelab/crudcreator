@@ -9,15 +9,10 @@
             "can_indicate_read_distinct": true,
             "fields": [
                 {
-                    "name": "column_1",
-                    "can_be_created": true,
-                    "can_be_updated": true
+                    "name": "column_1"
                 },
                 {
-                    "name": "column_2_bis",
-                    "is_id_field": true,
-                    "can_be_created": true,
-                    "can_be_updated": true
+                    "name": "column_2_bis"
                 }
             ]
         }
@@ -86,7 +81,80 @@
     {
         "name": "ReadFirewall",
         "params": {
-            "list_readable_field_name": ["column_1", "column_2_bis", "table20.column_1", "column_2", "table_many.column_1", "table_many.column_2"]
+            "list_readable_field_name": [
+                "column_1", 
+                "column_2_bis",
+                "column_2",
+                "table20.column_1",
+                "table_many.column_1",
+                "table_many.column_2"
+            ]
+        }
+    },
+    {
+        "name": "GroupBy",
+        "params": {
+            "group_name": "group",
+            "grouped_by_fields": ["column_1", "column_2_bis", "table20.column_1", "column_2"],
+            "one_elem_with_all_none_means_empty": true,
+            "see_group_only_on_option": "extend_group"
+        }
+    },
+    {
+        "name": "ReadFirewall",
+        "params": {
+            "list_readable_field_name": [
+                "column_1", 
+                "column_2_bis",
+                "table20.column_1",
+                "column_2",
+                "group"
+            ]
+        }
+    },
+    {
+        "name": "GroupBy",
+        "params": {
+            "group_name": "group_bis",
+            "grouped_by_fields": ["column_1", "column_2_bis"],
+            "one_elem_with_all_none_means_empty": true,
+            "see_group_only_on_option": "extend_group_bis"
+        }
+    },
+    {
+        "name": "ReadFirewall",
+        "params": {
+            "list_readable_field_name": [
+                "column_1", 
+                "column_2_bis",
+                "group_bis"
+            ]
+        }
+    },
+    {
+        "name": "CreateFirewall",
+        "params": {
+            "list_creatable_field_name": [
+                "column_1",
+                "column_2_bis"
+            ]
+        }
+    },
+    {
+        "name": "UpdateFirewall",
+        "params": {
+            "list_updatable_field_name": [
+                "column_1",
+                "column_2_bis"
+            ]
+        }
+    },
+    {
+        "name": "IdFirewall",
+        "params": {
+            "list_id_field_name": [
+                "column_2_bis"
+            ]
         }
     },
     {
@@ -126,24 +194,6 @@
                     }
                 }
             ]
-        }
-    },
-    {
-        "name": "GroupBy",
-        "params": {
-            "group_name": "group",
-            "grouped_by_fields": ["column_1", "column_2_bis", "table20.column_1", "column_2"],
-            "one_elem_with_all_none_means_empty": true,
-            "see_group_only_on_option": "extend_group"
-        }
-    },
-    {
-        "name": "GroupBy",
-        "params": {
-            "group_name": "group_bis",
-            "grouped_by_fields": ["column_1", "column_2_bis"],
-            "one_elem_with_all_none_means_empty": true,
-            "see_group_only_on_option": "extend_group_bis"
         }
     },
     {

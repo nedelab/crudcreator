@@ -12,8 +12,7 @@
                     "name": "column_id"
                 },
                 {
-                    "name": "column_to_join",
-                    "is_id_field": true
+                    "name": "column_to_join"
                 }
             ]
         }
@@ -70,6 +69,14 @@
     {
         "name": "CascadeDelete",
         "params": {}
+    },
+    {
+        "name": "IdFirewall",
+        "params": {
+            "list_id_field_name": [
+                "field_to_join"
+            ]
+        }
     },
     {
         "name": "FilterFirewall",

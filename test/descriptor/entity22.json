@@ -86,17 +86,23 @@
         }
     },
     {
-        "name": "FilterFirewall",
-        "params": {
-            "allowed_filter_on_fields": []
-        }
-    },
-    {
         "name": "GatherFields",
         "params": {
             "group_name": "user",
             "gathered_fields": ["table_user.column_id", "other"],
             "see_group_only_on_option": "extend_user"
+        }
+    },
+    {
+        "name": "ReadFirewall",
+        "params": {
+            "list_readable_field_name": ["user_id", "field_id", "user"]
+        }
+    },
+    {
+        "name": "FilterFirewall",
+        "params": {
+            "allowed_filter_on_fields": []
         }
     },
     {

@@ -9,15 +9,10 @@
             "can_indicate_read_distinct": true,
             "fields": [
                 {
-                    "name": "column_1",
-                    "can_be_created": true,
-                    "can_be_updated": true
+                    "name": "column_1"
                 },
                 {
-                    "name": "column_2",
-                    "is_id_field": true,
-                    "can_be_created": true,
-                    "can_be_updated": true
+                    "name": "column_2"
                 }
             ]
         }
@@ -113,6 +108,47 @@
         }
     },
     {
+        "name": "GroupBy",
+        "params": {
+            "group_name": "group",
+            "grouped_by_fields": ["column_1", "column_2"],
+            "one_elem_with_all_none_means_empty": true,
+            "see_group_only_on_option": "extend_group"
+        }
+    },
+    {
+        "name": "ReadFirewall",
+        "params": {
+            "list_readable_field_name": ["column_1", "column_2", "group"]
+        }
+    },
+    {
+        "name": "CreateFirewall",
+        "params": {
+            "list_creatable_field_name": [
+                "column_1",
+                "column_2"
+            ]
+        }
+    },
+    {
+        "name": "UpdateFirewall",
+        "params": {
+            "list_updatable_field_name": [
+                "column_1",
+                "column_2"
+            ]
+        }
+    },
+    {
+        "name": "IdFirewall",
+        "params": {
+            "list_id_field_name": [
+                "column_2"
+            ]
+        }
+    },
+    {
         "name": "FilterFirewall",
         "params": {
             "allowed_filter_on_fields": [
@@ -131,33 +167,8 @@
                         "is_mandatory": false,
                         "default": null
                     }
-                },
-                {
-                    "field_name": "table_many.column_1",
-                    "allowed_filter_type": {
-                        "filtration_type": "equal", 
-                        "is_mandatory": false,
-                        "default": null
-                    }
-                },
-                {
-                    "field_name": "table_many.column_2",
-                    "allowed_filter_type": {
-                        "filtration_type": "equal", 
-                        "is_mandatory": false,
-                        "default": null
-                    }
                 }
             ]
-        }
-    },
-    {
-        "name": "GroupBy",
-        "params": {
-            "group_name": "group",
-            "grouped_by_fields": ["column_1", "column_2"],
-            "one_elem_with_all_none_means_empty": true,
-            "see_group_only_on_option": "extend_group"
         }
     },
     {

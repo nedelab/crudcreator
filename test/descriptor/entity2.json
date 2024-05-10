@@ -9,16 +9,10 @@
             "can_indicate_read_distinct": true,
             "fields": [
                 {
-                    "name": "column_pk_becomes_not_pk",
-                    "is_id_field": false,
-                    "can_be_created": true,
-                    "can_be_updated": true
+                    "name": "column_pk_becomes_not_pk"
                 },
                 {
-                    "name": "column_not_pk_becomes_pk",
-                    "is_id_field": true,
-                    "can_be_created": true,
-                    "can_be_updated": true
+                    "name": "column_not_pk_becomes_pk"
                 }
             ]
         }
@@ -36,6 +30,41 @@
                     "source": "column_not_pk_becomes_pk",
                     "destination": "field_not_pk_becomes_pk"
                 }
+            ]
+        }
+    },
+    {
+        "name": "ReadFirewall",
+        "params": {
+            "list_readable_field_name": [
+                "field_pk_becomes_not_pk",
+                "field_not_pk_becomes_pk"
+            ]
+        }
+    },
+    {
+        "name": "CreateFirewall",
+        "params": {
+            "list_creatable_field_name": [
+                "field_pk_becomes_not_pk",
+                "field_not_pk_becomes_pk"
+            ]
+        }
+    },
+    {
+        "name": "UpdateFirewall",
+        "params": {
+            "list_updatable_field_name": [
+                "field_pk_becomes_not_pk",
+                "field_not_pk_becomes_pk"
+            ]
+        }
+    },
+    {
+        "name": "IdFirewall",
+        "params": {
+            "list_id_field_name": [
+                "field_not_pk_becomes_pk"
             ]
         }
     },

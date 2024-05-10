@@ -9,8 +9,7 @@
             "can_indicate_read_distinct": true,
             "fields": [
                 {
-                    "name": "column_id",
-                    "is_id_field": true
+                    "name": "column_id"
                 },
                 {
                     "name": "column_byte"
@@ -31,6 +30,23 @@
                     "source": "column_byte",
                     "destination": "field_byte"
                 }
+            ]
+        }
+    },
+    {
+        "name": "ReadFirewall",
+        "params": {
+            "list_readable_field_name": [
+                "field_id",
+                "field_byte"
+            ]
+        }
+    },
+    {
+        "name": "IdFirewall",
+        "params": {
+            "list_id_field_name": [
+                "field_id"
             ]
         }
     },

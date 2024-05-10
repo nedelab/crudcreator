@@ -34,6 +34,15 @@
         }
     },
     {
+        "name": "ReadFirewall",
+        "params": {
+            "list_readable_field_name": [
+                "field_id",
+                "field_date"
+            ]
+        }
+    },
+    {
         "name": "FilterFirewall",
         "params": {
             "allowed_filter_on_fields": [

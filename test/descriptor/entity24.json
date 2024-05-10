@@ -9,27 +9,16 @@
             "can_indicate_read_distinct": true,
             "fields": [
                 {
-                    "name": "column_1",
-                    "can_be_created": true,
-                    "can_be_updated": true
+                    "name": "column_1"
                 },
                 {
-                    "name": "column_2",
-                    "is_id_field": true,
-                    "can_be_created": true,
-                    "can_be_updated": true
+                    "name": "column_2"
                 },
                 {
-                    "name": "creation_date",
-                    "is_id_field": false,
-                    "can_be_created": false,
-                    "can_be_updated": false
+                    "name": "creation_date"
                 },
                 {
-                    "name": "last_update_date",
-                    "is_id_field": false,
-                    "can_be_created": false,
-                    "can_be_updated": false
+                    "name": "last_update_date"
                 }
             ]
         }
@@ -42,9 +31,53 @@
         }
     },
     {
+        "name": "AddWriteValue",
+        "params": {
+            "list_create_value": [
+                {
+                    "name": "creation_date",
+                    "value": "$now$"
+                }
+            ],
+            
+            "list_update_value": [
+                {
+                    "name": "last_update_date",
+                    "value": "$now$"
+                }
+            ]
+        }
+    },
+    {
         "name": "ReadFirewall",
         "params": {
             "list_readable_field_name": ["column_1", "column_2", "creation_date", "last_update_date"]
+        }
+    },
+    {
+        "name": "CreateFirewall",
+        "params": {
+            "list_creatable_field_name": [
+                "column_1",
+                "column_2"
+            ]
+        }
+    },
+    {
+        "name": "UpdateFirewall",
+        "params": {
+            "list_updatable_field_name": [
+                "column_1",
+                "column_2"
+            ]
+        }
+    },
+    {
+        "name": "IdFirewall",
+        "params": {
+            "list_id_field_name": [
+                "column_2"
+            ]
         }
     },
     {
@@ -66,24 +99,6 @@
                         "is_mandatory": false,
                         "default": null
                     }
-                }
-            ]
-        }
-    },
-    {
-        "name": "AddWriteValue",
-        "params": {
-            "list_create_value": [
-                {
-                    "name": "creation_date",
-                    "value": "$now$"
-                }
-            ],
-            
-            "list_update_value": [
-                {
-                    "name": "last_update_date",
-                    "value": "$now$"
                 }
             ]
         }

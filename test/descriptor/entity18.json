@@ -12,10 +12,7 @@
                     "name": "column_id"
                 },
                 {
-                    "name": "column_to_join",
-                    "is_id_field": true,
-                    "can_be_created": true,
-                    "can_be_updated": true
+                    "name": "column_to_join"
                 }
             ]
         }
@@ -131,6 +128,30 @@
         "name": "ReadFirewall",
         "params": {
             "list_readable_field_name": ["field_to_join", "field_bool_converted_bis"]
+        }
+    },
+    {
+        "name": "CreateFirewall",
+        "params": {
+            "list_creatable_field_name": [
+                "field_to_join"
+            ]
+        }
+    },
+    {
+        "name": "UpdateFirewall",
+        "params": {
+            "list_updatable_field_name": [
+                "field_to_join"
+            ]
+        }
+    },
+    {
+        "name": "IdFirewall",
+        "params": {
+            "list_id_field_name": [
+                "field_to_join"
+            ]
         }
     },
     {

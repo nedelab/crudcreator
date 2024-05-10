@@ -21,6 +21,7 @@ from .request_modifier.AddSort import AddSort, AddSortParams
 from .firewall.SortFirewall import SortFirewall, SortFirewallParams
 from .request_modifier.ReadDistinct import ReadDistinct, ReadDistinctParams
 from .firewall.ReadDistinctFirewall import ReadDistinctFirewall, ReadDistinctFirewallParams
+from .firewall.IdFirewall import IdFirewall, IdFirewallParams
 
 __all__ = [
     AddFilter, AddFilterParams,
